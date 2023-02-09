@@ -110,7 +110,7 @@ if agree:
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
             
             st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
-            st.session_state.items_order = np.random.shuffle(np.arange(len(st.session_state.mist_items)))
+            st.session_state.items_order = np.arange(20) # np.random.shuffle(np.arange(len(st.session_state.mist_items)))
             
             formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             st.session_state.answers = []
