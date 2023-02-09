@@ -107,8 +107,10 @@ if agree:
             st.session_state.labels = ["Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake",
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
             
-            st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
-            st.session_state.items_order = np.arange(20) # np.random.shuffle(np.arange(len(st.session_state.mist_items)))
+            if "order" not in st.session_state:
+                st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
+            if "items_order" not in st.session_state:
+                st.session_state.items_order = np.arange(20) # np.random.shuffle(np.arange(len(st.session_state.mist_items)))
             st.session_state.answers = []
             
             with st.expander("Form",expanded=True):
@@ -122,7 +124,7 @@ if agree:
                 with formchoice:
                     st.markdown("   ".join(st.session_state.order))
                     for i in range(20):
-                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1),label_visibility="hidden", horizontal=True))
+                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), label_visibility="collapsed", horizontal=True))
                
                 st.session_state.disable = True if st.session_state.q20 != "" else False
  
