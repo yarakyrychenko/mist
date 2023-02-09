@@ -82,8 +82,6 @@ if agree:
     with formcol1:
         form_place = st.empty()
         with form_place.container():
-            form = st.expander("Form",expanded=True)
-            form.markdown("##### Please categorize the following news headlines as either 'Fake News' or'Real News'.")
             st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -111,22 +109,26 @@ if agree:
             
             st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
             st.session_state.items_order = np.arange(20) # np.random.shuffle(np.arange(len(st.session_state.mist_items)))
-            
-            formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             st.session_state.answers = []
-            with formprompt:
-                form.markdown("")
-                for i in st.session_state.items_order:
-                    form.markdown(st.session_state.mist_items[i])
-            with formchoice:
-                form.markdown(" ".join(st.session_state.order))
-                for i in range(20):
-                    st.session_state.answers.append(form.radio("", st.session_state.order, key = "q"+str(i+1), horizontal=True, label_visibility="collapsed"))
+            
+            with st.expander("Form",expanded=True):
+                st.markdown("##### Please categorize the following news headlines as either 'Fake News' or'Real News'.")
+                formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
+                
+                with formprompt:
+                    st.markdown("")
+                    for i in st.session_state.items_order:
+                        st.markdown(st.session_state.mist_items[i])
+                with formchoice:
+                    st.markdown(" ".join(st.session_state.order))
+                    for i in range(20):
+                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), horizontal=True, label_visibility="collapsed"))
                
-            st.session_state.disable = True if st.session_state.q20 != "" else False
+                st.session_state.disable = True if st.session_state.q20 != "" else False
  
-            form.warning("Please fill out every field of the form to enable the submit button.")              
-            st.session_state.submitted = form.button("Submit", disabled=st.session_state.q20)
+                st.warning("Please fill out every field of the form to enable the submit button.")              
+                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
+        
         if  st.session_state.submitted:
             #form_place.empty()
             pass
