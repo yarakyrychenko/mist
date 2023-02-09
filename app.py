@@ -70,9 +70,9 @@ st.session_state.two_columns_params = (.1, 1.5, .2, 1.5, .1)
 if agree:
     import pymongo
 
-    client = pymongo.MongoClient(st.secrets["mongo"])
-    db = client.polarization
-    st.session_state.collection = db.app
+    #client = pymongo.MongoClient(st.secrets["mongo"])
+    #db = client.polarization
+    #st.session_state.collection = db.app
 
     formsep1, formcol1, formsep2 = st.columns(st.session_state.one_columns_params)
     with formsep1:
