@@ -1,0 +1,8 @@
+pymongo[srv]
+datetime
+uuid
+matplotlib
+pandas
+numpy
+seaborn
+streamlit-lottie
