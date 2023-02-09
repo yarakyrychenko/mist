@@ -19,15 +19,6 @@ st.set_page_config(
 sns.set(rc={'figure.figsize':(4,5)})
 sns.set_style("whitegrid")
 
-st.markdown(
-    """ <style>
-            div[role="radiogroup"] >  :first-child{
-                display: none !important;
-            }
-        </style>
-        """,
-    unsafe_allow_html=True
-)
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (2.5, .7)
 
