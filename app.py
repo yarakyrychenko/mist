@@ -127,7 +127,7 @@ if agree:
                 with formchoice:
                     st.markdown("     ".join(st.session_state.order))
                     for i in range(20):
-                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func= ≈, label_visibility="collapsed", horizontal=True))
+                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                
                 st.session_state.disable = True if st.session_state.q20 != "" else False
  
