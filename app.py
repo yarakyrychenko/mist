@@ -175,7 +175,7 @@ if agree:
         st.session_state.d = st.session_state.d - 10 if st.session_state.d - 10 >= 0 else 0
         st.session_state.n = st.session_state.n - 10 if st.session_state.n - 10 >= 0 else 0
         
-        st.markdown(f"Veracity Discernment: {int(np.sum(st.session_state.graded}")))
+        st.markdown(f"Veracity Discernment: {int(np.sum(st.session_state.graded))}")
         st.markdown(f"Real News Detection: {st.session_state.r}")
         st.markdown("Fake News Detection: {st.session_state.f}")
         st.markdown("Distrust: {st.session_state.d}")
@@ -183,8 +183,6 @@ if agree:
         
         st.markdown("")
         st.markdown("***")
-        st.markdown("""Thank you for going through this analysis. Please share this app with others! 
-                       """) # If you have any comments, ideas or feedback, please reach out to me on Twitter [@YaraKyrychenko](https://twitter.com/YaraKyrychenko).
         components.html(
             """
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
