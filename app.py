@@ -5,7 +5,6 @@ from datetime import datetime
 from uuid import uuid4
 import seaborn as sns 
 import pandas as pd, numpy as np
-from helper import load_lottieurl, make_v_wordcloud, make_barplot
 
 
 st.set_page_config(
@@ -19,9 +18,6 @@ st.set_page_config(
 
 sns.set(rc={'figure.figsize':(4,5)})
 sns.set_style("whitegrid")
-
-#lottie_tweet = load_lottieurl('https://assets3.lottiefiles.com/packages/lf20_t2xm9bsw.json')
-#st_lottie(lottie_tweet, speed=1, height=200, key="initial")
 
 st.markdown(
     """ <style>
