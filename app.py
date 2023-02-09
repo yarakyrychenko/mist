@@ -19,6 +19,16 @@ st.set_page_config(
 sns.set(rc={'figure.figsize':(4,5)})
 sns.set_style("whitegrid")
 
+st.markdown(
+    """ <style>
+            div[role="radiogroup"] >  :first-child{
+                display: none !important;
+            }
+        </style>
+        """,
+    unsafe_allow_html=True
+)
+
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (2.5, .7)
 
@@ -153,8 +163,8 @@ if agree:
                 st.session_state.f += 1 if labels[i] == 'Fake' else 0
             else:
                 st.session_state.graded.append(0)
-            st.session_state.d += 1 if st.session_state.answers[i] == 'Fake'
-            st.session_state.n += 1 if st.session_state.answers[i] == 'Real'
+            st.session_state.d += 1 if st.session_state.answers[i] == 'Fake' else 0
+            st.session_state.n += 1 if st.session_state.answers[i] == 'Real' else 0
         
         st.session_state.d = st.session_state.d - 10 if st.session_state.d - 10 >= 0 else 0
         st.session_state.n = st.session_state.n - 10 if st.session_state.n - 10 >= 0 else 0
