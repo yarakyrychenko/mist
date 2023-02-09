@@ -33,7 +33,7 @@ def format(option):
     return ""
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
-st.session_state.radio_columns_params = (3, 1)
+st.session_state.radio_columns_params = (4, 1)
 
 row0sep1, row0col1, row0sep2 = st.columns(st.session_state.one_columns_params)
 with row0sep1:
@@ -125,13 +125,14 @@ if agree:
                     for i in st.session_state.items_order:
                         st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.markdown("     ".join(st.session_state.order))
+                    st.markdown(f"{st.session_state.order[1]}            {st.session_state.order[2]}))
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                
                 st.session_state.disable = True if st.session_state.q20 == "" else False
  
-                st.warning("Please fill out every field of the form to enable the submit button.")              
+                if st.session_state.disable:
+                    st.warning("Please fill out every field of the form to enable the submit button.")              
                 st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
         
         if  st.session_state.submitted:
@@ -166,8 +167,8 @@ if agree:
         for i in st.session_state.items_order:
             if st.session_state.labels[i] == st.session_state.answers[i]:
                 st.session_state.graded.append(1)
-                st.session_state.r += 1 if labels[i] == 'Real' else 0
-                st.session_state.f += 1 if labels[i] == 'Fake' else 0
+                st.session_state.r += 1 if st.session_state.labels[i] == 'Real' else 0
+                st.session_state.f += 1 if st.session_state.labels[i] == 'Fake' else 0
             else:
                 st.session_state.graded.append(0)
             st.session_state.d += 1 if st.session_state.answers[i] == 'Fake' else 0
