@@ -125,7 +125,7 @@ if agree:
                     for i in st.session_state.items_order:
                         st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.markdown(f"{st.session_state.order[1]}            {st.session_state.order[2]}")
+                    st.write(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                
@@ -138,9 +138,7 @@ if agree:
         if  st.session_state.submitted:
             #form_place.empty()
             pass
-  
-
-
+ 
         with st.expander("Form Submitted",expanded=True):
             if st.session_state.submitted:
                 st.write(st.session_state.answers)
