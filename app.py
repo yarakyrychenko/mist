@@ -113,7 +113,8 @@ if agree:
             if "order" not in st.session_state:
                 st.session_state.order = ['', 'Real','Fake'] if np.random.random() <= .5 else ['','Fake','Real']
             if "items_order" not in st.session_state:
-                st.session_state.items_order = np.arange(20) # np.random.shuffle(np.arange(len(st.session_state.mist_items)))
+                st.session_state.items_order = np.arange(20)
+                np.random.shuffle(st.session_state.items_order)
             st.session_state.answers = []
             
             with st.expander("Form",expanded=True):
@@ -177,9 +178,9 @@ if agree:
         
         st.markdown(f"Veracity Discernment: {int(np.sum(st.session_state.graded))}")
         st.markdown(f"Real News Detection: {st.session_state.r}")
-        st.markdown("Fake News Detection: {st.session_state.f}")
-        st.markdown("Distrust: {st.session_state.d}")
-        st.markdown("Naïvité: {st.session_state.n}")
+        st.markdown(f"Fake News Detection: {st.session_state.f}")
+        st.markdown(f"Distrust: {st.session_state.d}")
+        st.markdown(f"Naïvité: {st.session_state.n}")
         
         st.markdown("")
         st.markdown("***")
