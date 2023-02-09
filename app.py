@@ -84,7 +84,7 @@ if agree:
         with form_place.container():
             form = st.expander("Form",expanded=True)
             form.markdown("##### Please categorize the following news headlines as either 'Fake News' or'Real News'.")
-            st.session_state.items = [
+            st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
              "New Study: Left-Wingers Are More Likely to Lie to Get a Higher Salary",
@@ -110,14 +110,14 @@ if agree:
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
             
             st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
-            st.session_state.items_order = np.random.shuffle(np.arange(len(st.session_state.items)))
+            st.session_state.items_order = np.random.shuffle(np.arange(len(st.session_state.mist_items)))
             
             formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             st.session_state.answers = []
             with formprompt:
               st.markdown("")
               for i in st.session_state.items_order:
-                st.markdown(st.session_state.items[i])
+                st.markdown(st.session_state.mist_items[i])
             with formchoice:
               st.markdown(" ".join(st.session_state.order))
               for i in range(20):
