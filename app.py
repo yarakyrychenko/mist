@@ -129,7 +129,7 @@ if agree:
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                
-                st.session_state.disable = True if st.session_state.q20 != "" else False
+                st.session_state.disable = True if st.session_state.q20 == "" else False
  
                 st.warning("Please fill out every field of the form to enable the submit button.")              
                 st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
