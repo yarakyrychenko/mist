@@ -175,11 +175,11 @@ if agree:
         st.session_state.d = st.session_state.d - 10 if st.session_state.d - 10 >= 0 else 0
         st.session_state.n = st.session_state.n - 10 if st.session_state.n - 10 >= 0 else 0
         
-        st.markdown("Veracity Discernment:", int(np.sum(st.session_state.graded)))
-        st.markdown("Real News Detection:", st.session_state.r)
-        st.markdown("Fake News Detection:", st.session_state.f)
-        st.markdown("Distrust:", st.session_state.d)
-        st.markdown("Naïvité:", st.session_state.n)
+        st.markdown(f"Veracity Discernment: {int(np.sum(st.session_state.graded}")))
+        st.markdown(f"Real News Detection: {st.session_state.r}")
+        st.markdown("Fake News Detection: {st.session_state.f}")
+        st.markdown("Distrust: {st.session_state.d}")
+        st.markdown("Naïvité: {st.session_state.n}")
         
         st.markdown("")
         st.markdown("***")
