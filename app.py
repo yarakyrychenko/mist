@@ -120,9 +120,9 @@ if agree:
                     for i in st.session_state.items_order:
                         st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.markdown(" ".join(st.session_state.order))
+                    st.markdown("   ".join(st.session_state.order))
                     for i in range(20):
-                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), horizontal=True, label_visibility="collapsed"))
+                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1),label_visibility="hidden", horizontal=True))
                
                 st.session_state.disable = True if st.session_state.q20 != "" else False
  
@@ -152,7 +152,7 @@ if agree:
         st.markdown("")
 
     if st.session_state.submitted:
-        st.session_state.graded == []
+        st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
         st.session_state.d = 0
