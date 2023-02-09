@@ -30,7 +30,7 @@ st.markdown(
 )
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
-st.session_state.radio_columns_params = (2.5, .7)
+st.session_state.radio_columns_params = (2, 1)
 
 row0sep1, row0col1, row0sep2 = st.columns(st.session_state.one_columns_params)
 with row0sep1:
@@ -121,7 +121,7 @@ if agree:
             with formchoice:
                 form.markdown(" ".join(st.session_state.order))
                 for i in range(20):
-                    st.session_state.answers.append(form.radio("", st.session_state.order, key = "q"+str(i+1), horizontal= True, label_visibility= "collapsed"))
+                    st.session_state.answers.append(form.radio("", st.session_state.order, key = "q"+str(i+1), kwargs= {"horizontal": True, "label_visibility": "collapsed"}))
                
             st.session_state.disable = True if st.session_state.q20 != "" else False
  
