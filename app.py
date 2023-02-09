@@ -115,13 +115,13 @@ if agree:
             formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             st.session_state.answers = []
             with formprompt:
-              st.markdown("")
-              for i in st.session_state.items_order:
-                st.markdown(st.session_state.mist_items[i])
+                form.markdown("")
+                for i in st.session_state.items_order:
+                    form.markdown(st.session_state.mist_items[i])
             with formchoice:
-              st.markdown(" ".join(st.session_state.order))
-              for i in range(20):
-                st.session_state.answers.append(form.radio("", st.session_state.order, key = "q"+str(i+1), horizontal= True, label_visibility= "collapsed"))
+                form.markdown(" ".join(st.session_state.order))
+                for i in range(20):
+                    st.session_state.answers.append(form.radio("", st.session_state.order, key = "q"+str(i+1), horizontal= True, label_visibility= "collapsed"))
                
             st.session_state.disable = True if st.session_state.q20 != "" else False
  
