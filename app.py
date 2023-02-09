@@ -8,7 +8,7 @@ import pandas as pd, numpy as np
 
 
 st.set_page_config(
-    page_title="🧐 MIST",
+    page_title="MIST",
     page_icon="🧐",
     layout="wide",
     menu_items={
@@ -37,7 +37,7 @@ with row0sep1:
     st.markdown("")
 
 with row0col1:
-    st.markdown("<h1 style='text-align: center;'> MIST </h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'> 🧐 MIST 🧐 </h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='text-align: center;'> Test your misinformation susceptibility </h2>", unsafe_allow_html=True)
 
     placeholder = st.empty()
@@ -110,7 +110,7 @@ if agree:
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
             
             st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
-            st.session_state.items_order = np.random.shuffle(range(len(st.session_state.items)))
+            st.session_state.items_order = np.random.shuffle(np.arange(len(st.session_state.items)))
             
             formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             st.session_state.answers = []
