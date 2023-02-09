@@ -86,18 +86,18 @@ if agree:
         form_place = st.empty()
         with form_place.container():
             st.session_state.mist_items = [
-             "Government Officials Have Manipulated Stock Prices to Hide Scandals",
-             "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
-             "New Study: Left-Wingers Are More Likely to Lie to Get a Higher Salary",
+             "Government Officials Have Manipulated Stock Prices to Hide Scandals                                                                    ",
+             "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda   ",
+             "New Study: Left-Wingers Are More Likely to Lie to Get a Higher Salary                                                                  ",
              "The Government Is Manipulating the Public's Perception of Genetic Engineering in Order to Make People More Accepting of Such Techniques",
-             "Left-Wing Extremism Causes 'More Damage' to World Than Terrorism, Says UN Report",
-             "Certain Vaccines Are Loaded with Dangerous Chemicals and Toxins",
-             "New Study: Clear Relationship Between Eye Color and Intelligence",
-             "The Government Is Knowingly Spreading Disease Through the Airwaves and Food Supply",
-             "Ebola Virus 'Caused by US Nuclear Weapons Testing', New Study Says",
-             "Government Officials Have Illegally Manipulated the Weather to Cause Devastating Storms",
-             "Attitudes Toward EU Are Largely Positive, Both Within Europe and Outside It",
-             "One-in-Three Worldwide Lack Confidence in NGOs",
+             "Left-Wing Extremism Causes 'More Damage' to World Than Terrorism, Says UN Report                                                        ",
+             "Certain Vaccines Are Loaded with Dangerous Chemicals and Toxins                                                                         ",
+             "New Study: Clear Relationship Between Eye Color and Intelligence                                                                        ",
+             "The Government Is Knowingly Spreading Disease Through the Airwaves and Food Supply                                                      ",
+             "Ebola Virus 'Caused by US Nuclear Weapons Testing', New Study Says                                                                      ",
+             "Government Officials Have Illegally Manipulated the Weather to Cause Devastating Storms                                                 ",
+             "Attitudes Toward EU Are Largely Positive, Both Within Europe and Outside It                                                             ",
+             "One-in-Three Worldwide Lack Confidence in NGOs                                                                                          ",
              "Reflecting a Demographic Shift, 109 US Counties Have Become Majority Nonwhite Since 2000",
              "International Relations Experts and US Public Agree: America Is Less Respected Globally",
              "Hyatt Will Remove Small Bottles from Hotel Bathrooms by 2021",
@@ -119,6 +119,7 @@ if agree:
             
             with st.expander("Form",expanded=True):
                 st.markdown("##### Please categorize the following news headlines as either 'Fake News' or'Real News'.")
+                
                 formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                 
                 with formprompt:
@@ -126,7 +127,7 @@ if agree:
                     for i in st.session_state.items_order:
                         st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.write(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
+                    st.markdown(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                
@@ -142,7 +143,6 @@ if agree:
  
         with st.expander("Form Submitted",expanded=True):
             if st.session_state.submitted:
-                st.write(st.session_state.answers)
                 st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
                 st.markdown(f"Thanks for submitting your answers! Your app ID is **{st.session_state.id}**. [Email me](mailto:yara@nyu.edu) with it if you want your answers deleted.") 
 
