@@ -19,15 +19,6 @@ st.set_page_config(
 sns.set(rc={'figure.figsize':(4,5)})
 sns.set_style("whitegrid")
 
-st.markdown(
-    """ <style>
-            div[role="radiogroup"] >  :first-child{
-                display: none !important;
-            }
-        </style>
-        """,
-    unsafe_allow_html=True
-)
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (2, 1)
@@ -118,11 +109,11 @@ if agree:
                 formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                 
                 with formprompt:
-                    st.markdown("")
+                    st.markdown("                                                                        ")
                     for i in st.session_state.items_order:
                         st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.markdown("   ".join(st.session_state.order))
+                    st.markdown("     ".join(st.session_state.order))
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), label_visibility="collapsed", horizontal=True))
                
