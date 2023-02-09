@@ -19,6 +19,18 @@ st.set_page_config(
 sns.set(rc={'figure.figsize':(4,5)})
 sns.set_style("whitegrid")
 
+st.markdown(
+    """ <style>
+            div[role="radiogroup"] >  :first-child{
+                display: none !important;
+            }
+        </style>
+        """,
+    unsafe_allow_html=True
+)
+
+def format(option):
+    return ""
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (2, 1)
@@ -99,7 +111,7 @@ if agree:
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
             
             if "order" not in st.session_state:
-                st.session_state.order = ('', 'Real','Fake') if np.random.random() <= .5 else ('','Fake','Real')
+                st.session_state.order = ['', 'Real','Fake'] if np.random.random() <= .5 else ['','Fake','Real']
             if "items_order" not in st.session_state:
                 st.session_state.items_order = np.arange(20) # np.random.shuffle(np.arange(len(st.session_state.mist_items)))
             st.session_state.answers = []
@@ -115,7 +127,7 @@ if agree:
                 with formchoice:
                     st.markdown("     ".join(st.session_state.order))
                     for i in range(20):
-                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), label_visibility="collapsed", horizontal=True))
+                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func= ≈, label_visibility="collapsed", horizontal=True))
                
                 st.session_state.disable = True if st.session_state.q20 != "" else False
  
