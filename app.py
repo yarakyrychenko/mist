@@ -183,9 +183,9 @@ if agree:
         st.markdown("##### 📈 Your MIST results")
         st.markdown(f"**Veracity Discernment: {st.session_state.score}/20** *(ability to accurately distinguish real news from fake news)*")
         st.markdown(f"**Real News Detection: {st.session_state.r}/10** *(ability to correctly identify real news)*")
-        st.markdown(f"Fake News Detection: {st.session_state.f}/10** *(ability to correctly identify fake news)*")
-        st.markdown(f"Distrust: {st.session_state.d}/10** *(negative judgment bias or being overly skeptical)*")
-        st.markdown(f"Naïvité: {st.session_state.n}/10** *(positive judgment bias or being overly gullible)*")
+        st.markdown(f"**Fake News Detection: {st.session_state.f}/10** *(ability to correctly identify fake news)*")
+        st.markdown(f"**Distrust: {st.session_state.d}/10** *(negative judgment bias or being overly skeptical)*")
+        st.markdown(f"**Naïvité: {st.session_state.n}/10** *(positive judgment bias or being overly gullible)*")
 
         
         
