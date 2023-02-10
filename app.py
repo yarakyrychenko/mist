@@ -33,7 +33,7 @@ def format(option):
     return "Real" if option == "Real" else "Fake"
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
-st.session_state.radio_columns_params = (6, 1)
+st.session_state.radio_columns_params = (5, 1)
 
 st.markdown("<h1 style='text-align: center;'> 🧐 MIST 🧐 </h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center;'> Test your misinformation susceptibility </h2>", unsafe_allow_html=True)
@@ -106,11 +106,11 @@ if agree:
             
         with st.expander("Form",expanded=True):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
-            formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
-            with formprompt:
-                st.markdown("")
-            with formchoice:
-                st.write(f"**{st.session_state.order[1]}**\t**{st.session_state.order[2]}**")
+            #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
+            #with formprompt:
+            #    st.markdown("")
+            #with formchoice:
+            #    st.write(f"**{st.session_state.order[1]}**\t**{st.session_state.order[2]}**")
                     
             j =0
             for i in st.session_state.items_order:
