@@ -118,7 +118,7 @@ if agree:
             st.session_state.answers = []
             
             with st.expander("Form",expanded=True):
-                st.markdown("##### Please categorize the following news headlines as either 'Fake News' or'Real News'.")
+                st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
                 
                 formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                 
@@ -131,9 +131,7 @@ if agree:
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                 
-                for i in st.session_state.items_order:
-                        st.radio(st.session_state.mist_items[i],st.session_state.order, key = "qb"+str(i), format_func=format, label_visibility="collapsed", horizontal=True)
-                        
+                     
                 st.session_state.disable = True if st.session_state.q20 == "" else False
  
                 if st.session_state.disable:
