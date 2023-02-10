@@ -34,7 +34,7 @@ st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (5, 1)
 
 st.header("🧐 MIST Misinformation Susceptibility Test 🧐")
-st.subheader("A comprehensive test of your misinformation susceptibility in just 2 minutes.")
+st.subheader("Think you can beat misinformation? Try this test! ")
 
 placeholder = st.empty()
 with placeholder.container():
