@@ -28,6 +28,7 @@ st.markdown(
         """,
     unsafe_allow_html=True
 )
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
 
 def format(option):
     return ""
