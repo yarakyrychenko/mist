@@ -1,3 +1,4 @@
+streamlit==1.7.0
 pymongo[srv]
 datetime
 uuid
