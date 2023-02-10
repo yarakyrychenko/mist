@@ -123,11 +123,7 @@ if agree:
                 with formprompt:
                     st.markdown("")
                 with formchoice:
-                    col1f, col2f = st.columns((.5,.5))
-                    with col1f:
-                        st.write(f"{st.session_state.order[1]}")
-                    with col2f:
-                        st.write(f"{st.session_state.order[2]}")
+                    st.write(f"{st.session_state.order[1]}\t{st.session_state.order[2]}")
                     
                 j =0
                 for i in st.session_state.items_order:
