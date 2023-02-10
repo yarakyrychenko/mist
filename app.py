@@ -30,7 +30,7 @@ st.markdown(
 )
 
 def format(option):
-    return ""
+    return "Real" if option == "Real" else "Fake"
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (6, 1)
@@ -120,7 +120,7 @@ if agree:
                     st.write("")
                     st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+                    st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="collapsed", horizontal=True))
                      
             st.session_state.disable = True if st.session_state.q20 == "" else False
  
