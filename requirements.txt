@@ -7,3 +7,4 @@ pandas
 numpy
 seaborn
 streamlit-lottie
+streamlit-nested-layout
