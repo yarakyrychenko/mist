@@ -10,7 +10,7 @@ import pandas as pd, numpy as np
 st.set_page_config(
     page_title="MIST",
     page_icon="🧐",
-    layout="centered"
+    layout="wide"
 )
 
 
