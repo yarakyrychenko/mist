@@ -180,7 +180,7 @@ if agree:
         
         st.session_state.score = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
         st.session_state.dn = st.session_state.n - st.session_state.d
-        st.session_state.sign = "" if st.session_state.dn < 0 else "+"
+        st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
         
         st.markdown("##### 📈 Your MIST results")
         st.markdown(f"**Veracity Discernment: {10*st.session_state.score}%** *(ability to accurately distinguish real news from fake news)*")
