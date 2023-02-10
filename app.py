@@ -5,6 +5,7 @@ from datetime import datetime
 from uuid import uuid4
 import seaborn as sns 
 import pandas as pd, numpy as np
+import streamlit_nested_layout
 
 
 st.set_page_config(
