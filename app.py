@@ -103,7 +103,7 @@ if agree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander(" ",expanded=True):
+        with st.expander("Test",expanded=True):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
             #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             #with formprompt:
@@ -128,8 +128,7 @@ if agree:
             st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
         
     if  st.session_state.submitted:
-            #form_place.empty()
-        pass
+        form_place.empty()
  
     with st.expander("Form Submitted",expanded=True):
         if st.session_state.submitted:
