@@ -33,7 +33,7 @@ def format(option):
     return ""
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
-st.session_state.radio_columns_params = (4, 1)
+st.session_state.radio_columns_params = (4.5, 1)
 
 row0sep1, row0col1, row0sep2 = st.columns(st.session_state.one_columns_params)
 with row0sep1:
@@ -130,7 +130,10 @@ if agree:
                     st.markdown(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
                     for i in range(20):
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
-               
+                
+                for i in st.session_state.items_order:
+                        st.radio(st.session_state.mist_items[i],st.session_state.order, key = "qb"+str(i), format_func=format, label_visibility="collapsed", horizontal=True)
+                        
                 st.session_state.disable = True if st.session_state.q20 == "" else False
  
                 if st.session_state.disable:
