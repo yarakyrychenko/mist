@@ -129,7 +129,7 @@ if agree:
                 #with formchoice:
                 #st.markdown(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
                 for i in st.session_state.items_order:
-                        st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
+                        st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="hidden", horizontal=True))
                 
                      
                 st.session_state.disable = True if st.session_state.q20 == "" else False
