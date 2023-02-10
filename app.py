@@ -122,17 +122,18 @@ if agree:
                 formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                 with formprompt:
                     st.markdown("")
-                with formprompt:
-                    st.markdown(f"{st.session_state.order[1]}    {st.session_state.order[2]}")
+                with formchoice:
+                    st.write(f"{st.session_state.order[1]}    {st.session_state.order[2]}")
                     
                 j =0
                 for i in st.session_state.items_order:
                     j+=1
                     formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                     with formprompt:
+                        st.write("")
                         st.markdown(st.session_state.mist_items[i])
                     with formchoice:
-                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="collapsed", horizontal=True))
 
                 #with formprompt:
                   #  st.markdown("                                                                        ")
