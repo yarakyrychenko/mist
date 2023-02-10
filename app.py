@@ -183,10 +183,10 @@ if agree:
         st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
         
         st.markdown("##### 📈 Your MIST results")
-        st.markdown(f"**Veracity Discernment: {10*st.session_state.score}%**, *ability to accurately distinguish real news from fake news*")
+        st.markdown(f"**Veracity Discernment: {10*st.session_state.score}%** *(ability to accurately distinguish real news from fake news)*")
         st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
         st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
-        st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *, ranges from -10 (overly skeptical) to +10 (overly gullible)*")
+        st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 [overly skeptical] to +10 [overly gullible])*")
         #st.markdown(f"**Naïvité: {st.session_state.n - st.session_state.d}** *(positive judgment bias or being overly gullible)*")
 
         
