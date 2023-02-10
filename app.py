@@ -125,7 +125,7 @@ if agree:
                     with formprompt:
                         st.markdown("")
                         st.markdown(st.session_state.mist_items[i])
-                   with formchoice:
+                    with formchoice:
                         st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="visible", horizontal=True))
 
                 #with formprompt:
