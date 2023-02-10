@@ -165,11 +165,26 @@ if agree:
         st.session_state.d = st.session_state.d - 10 if st.session_state.d - 10 >= 0 else 0
         st.session_state.n = st.session_state.n - 10 if st.session_state.n - 10 >= 0 else 0
         
-        st.markdown(f"Veracity Discernment: {int(np.sum(st.session_state.graded))}")
+        st.session_state.ustable = {1:0, 2:0, 3:0, 4:0, 5:0, 6:1, 7:3, 8:6, 9:11, 10:20,
+                                    11:28, 12:36, 13:44, 14:53, 15:62, 16:71, 17:81, 18:89, 19:96, 20:100}
+        st.session_state.uktable = {1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:3, 8:5, 9:10, 10:23,
+                                    11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
+        st.session_state.score = int(np.sum(st.session_state.graded))
+        
+        if st.session_state.score > 15:
+            st.markdown("##### Congratulations!")
+        if st.session_state.score <= 15:
+            st.markdown("##### Good try!")
+        
+        st.markdown(f"###### You're more resilient to misinformation than {st.session_state.ustable[st.session_state.score]}% of the US population and {st.session_state.uktable[st.session_state.score]}% of the UK!")
+        
+        st.markdown("##### Your results:")
+        st.markdown(f"Veracity Discernment: {st.session_state.score}")
         st.markdown(f"Real News Detection: {st.session_state.r}")
         st.markdown(f"Fake News Detection: {st.session_state.f}")
         st.markdown(f"Distrust: {st.session_state.d}")
         st.markdown(f"Naïvité: {st.session_state.n}")
+        
         
         st.markdown("")
         st.markdown("***")
