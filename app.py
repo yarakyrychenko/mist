@@ -119,11 +119,15 @@ if agree:
             
             with st.expander("Form",expanded=True):
                 st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
-                formprompt, formchoice = st.columns((4, 1))
+                formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                 with formprompt:
                     st.markdown("")
                 with formchoice:
-                    st.write(f"{st.session_state.order[1]}    {st.session_state.order[2]}")
+                    col1f, col2f = st.columns((.5,.5))
+                    with col1f:
+                        st.write(f"{st.session_state.order[1]}")
+                    with col2f:
+                        st.write(f"{st.session_state.order[2]}")
                     
                 j =0
                 for i in st.session_state.items_order:
