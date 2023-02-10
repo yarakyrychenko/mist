@@ -180,19 +180,13 @@ if agree:
         st.markdown(f"###### You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
         st.markdown("")
         
-        st.markdown("##### Your results:")
-        st.markdown("")
-        st.markdown(f"**Veracity Discernment: {st.session_state.score} out of 20**")
-        st.markdown("*ability to accurately distinguish real news from fake news*")
-        st.markdown("")
-        st.markdown(f"Real News Detection: {st.session_state.r}")
-        st.markdown("*ability to correctly identify real news*")
-        st.markdown(f"Fake News Detection: {st.session_state.f}")
-        st.markdown("*ability to correctly identify fake news*")
-        st.markdown(f"Distrust: {st.session_state.d}")
-        st.markdown("*negative judgment bias or being overly skeptical*")
-        st.markdown(f"Naïvité: {st.session_state.n}")
-        st.markdown("*positive judgment bias or being overly gullible*")
+        st.markdown("##### Your results")
+        st.markdown(f"**Veracity Discernment: {st.session_state.score} out of 20** *(ability to accurately distinguish real news from fake news)*")
+        st.markdown(f"Real News Detection: {st.session_state.r} out of 10 *(ability to correctly identify real news)*")
+        st.markdown(f"Fake News Detection: {st.session_state.f} out of 10 *(ability to correctly identify fake news)*")
+        st.markdown(f"Distrust: {st.session_state.d} out of 10 *(negative judgment bias or being overly skeptical)*")
+        st.markdown(f"Naïvité: {st.session_state.n} out of 10 *(positive judgment bias or being overly gullible)*")
+
         
         
         st.markdown("")
