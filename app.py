@@ -122,20 +122,20 @@ if agree:
                 
                 formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
                 
-                with formprompt:
-                    st.markdown("                                                                        ")
-                    for i in st.session_state.items_order:
-                        st.markdown(st.session_state.mist_items[i])
-                with formchoice:
-                    st.markdown(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
-                    for i in range(20):
-                        st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
+                #with formprompt:
+                  #  st.markdown("                                                                        ")
+                   # for i in st.session_state.items_order:
+                      #  st.markdown(st.session_state.mist_items[i])
+                #with formchoice:
+                #st.markdown(f"{st.session_state.order[1]}         {st.session_state.order[2]}")
+                for i in st.session_state.items_order:
+                        st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(i+1), format_func=format, label_visibility="collapsed", horizontal=True))
                 
                      
                 st.session_state.disable = True if st.session_state.q20 == "" else False
  
-                if st.session_state.disable:
-                    st.warning("Please fill out every field of the form to enable the submit button.")              
+                #if st.session_state.disable:
+                   # st.warning("Please fill out every field of the form to enable the submit button.")              
                 st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
         
         if  st.session_state.submitted:
