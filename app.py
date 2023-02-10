@@ -10,7 +10,7 @@ import pandas as pd, numpy as np
 st.set_page_config(
     page_title="MIST Misinformation Susceptibility Test",
     page_icon="🧐",
-    layout="wide"
+    #layout="wide"
 )
 
 
