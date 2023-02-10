@@ -151,11 +151,12 @@ if agree:
         st.session_state.d = 0
         st.session_state.n = 0
         
-        for i in st.session_state.items_order:
-            if st.session_state.labels[i] == st.session_state.answers[i]:
+        for i in range(20):
+            j = st.session_state.items_order[i]
+            if st.session_state.labels[j] == st.session_state.answers[i]:
                 st.session_state.graded.append(1)
-                st.session_state.r += 1 if st.session_state.labels[i] == 'Real' else 0
-                st.session_state.f += 1 if st.session_state.labels[i] == 'Fake' else 0
+                st.session_state.r += 1 if st.session_state.labels[j] == 'Real' else 0
+                st.session_state.f += 1 if st.session_state.labels[j] == 'Fake' else 0
             else:
                 st.session_state.graded.append(0)
             st.session_state.d += 1 if st.session_state.answers[i] == 'Fake' else 0
