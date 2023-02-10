@@ -41,8 +41,8 @@ with placeholder.container():
     with st.expander("Consent", expanded=True):
         st.markdown("""
             By submitting the form below you agree to your data being used for research. 
-            Your data will be stored in a private data base and will not be shared with anyone other than the researchers (unless extraordinary circumstances force us to). 
-            You can ask for your data to be deleted by emailing us with an ID number you'll be issued after submitting the form. 
+            Your answers will be stored in a private data base and will not be shared with anyone other than the researchers. 
+            You can ask for your answers to be deleted by emailing us with an ID number you'll be issued after submitting. 
             """)
         agree = st.checkbox("I understand and consent.")
 
@@ -51,8 +51,8 @@ if agree:
     with st.expander("Consent", expanded=False):
         st.markdown("""
             By submitting the form below you agree to your data being used for research. 
-            Your data will be stored in a private data base and will not be shared with anyone other than the researchers (unless extraordinary circumstances force us to). 
-            You can ask for your data to be deleted by emailing us with an ID number you'll be issued after submitting the form. 
+            Your answers will be stored in a private data base and will not be shared with anyone other than the researchers. 
+            You can ask for your answers to be deleted by emailing us with an ID number you'll be issued after submitting. 
             """)
         st.markdown("You have consented.")
       
@@ -102,7 +102,7 @@ if agree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander("Form",expanded=True):
+        with st.expander(" ",expanded=True):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
             #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             #with formprompt:
@@ -120,7 +120,7 @@ if agree:
                 with formchoice:
                     st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="collapsed", horizontal=True))
                      
-            st.session_state.disable = True if st.session_state.q20 == "" else False
+            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) == 20 else False
  
                 #if st.session_state.disable:
                    # st.warning("Please fill out every field of the form to enable the submit button.")   
