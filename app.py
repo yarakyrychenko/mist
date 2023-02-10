@@ -8,7 +8,7 @@ import pandas as pd, numpy as np
 
 
 st.set_page_config(
-    page_title="MIST",
+    page_title="MIST Misinformation Susceptibility Test",
     page_icon="🧐",
     layout="wide"
 )
@@ -113,12 +113,12 @@ if agree:
             j =0
             for i in st.session_state.items_order:
                 j+=1
-                formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
-                with formprompt:
-                    st.write("")
-                    st.markdown(st.session_state.mist_items[i])
-                with formchoice:
-                    st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="collapsed", horizontal=True))
+                #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
+                #with formprompt:
+                    #st.markdown("")
+                    #st.markdown(st.session_state.mist_items[i])
+                #with formchoice:
+                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
  
