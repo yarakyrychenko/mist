@@ -130,18 +130,7 @@ if agree:
     if  st.session_state.submitted:
         #form_place.empty()
         pass
- 
-    with st.expander("Form Submitted",expanded=True):
-        if st.session_state.submitted:
-            st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
-            st.markdown(f"Thanks for submitting your answers! Your app ID is **{st.session_state.id}**. [Email us](mailto:yara@nyu.edu) with it if you want your answers deleted.") 
 
-            user_data = {
-                            "id": st.session_state.id, 
-                            "answers": st.session_state.answers, 
-                            }
-
-            #st.session_state.collection.insert_one(user_data)  
             
 
     if st.session_state.submitted:
@@ -173,28 +162,24 @@ if agree:
         
         if st.session_state.score > 15:
             st.balloons()
-            st.markdown("##### 🎉 Congratulations!")
+            st.header("🎉 Congratulations!")
         if st.session_state.score <= 15:
-            st.markdown("##### 👍 Good try!")
+            st.header("👍 Good try!")
         
-        st.markdown(f"###### You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
+        st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
         st.markdown("")
         
         st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
         st.session_state.dn = st.session_state.n - st.session_state.d
         st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
         
-        st.markdown("##### 📈 Your MIST results")
+        st.subheader("📈 Your MIST results")
         st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
         st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
         st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
         st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
-        #st.markdown(f"**Naïvité: {st.session_state.n - st.session_state.d}** *(positive judgment bias or being overly gullible)*")
-
-        
-        
+  
         st.markdown("")
-        st.markdown("***")
         components.html(
             f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
@@ -208,3 +193,13 @@ if agree:
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """
                    )
+        
+        st.markdown("***")
+        st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
+        st.markdown(f"Thanks for submitting your answers! Your app ID is **{st.session_state.id}**. [Email us](mailto:yara@nyu.edu) with it if you want your answers deleted.") 
+        user_data = {
+                            "id": st.session_state.id, 
+                            "answers": st.session_state.answers, 
+                            }
+
+            #st.session_state.collection.insert_one(user_data)  
