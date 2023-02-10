@@ -1,4 +1,4 @@
-streamlit==1.7.0
+streamlit
 pymongo[srv]
 datetime
 uuid
@@ -7,4 +7,3 @@ pandas
 numpy
 seaborn
 streamlit-lottie
-streamlit-nested-layout
