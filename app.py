@@ -126,8 +126,7 @@ if agree:
  
                 #if st.session_state.disable:
                    # st.warning("Please fill out every field of the form to enable the submit button.")   
-            if "submitted" not in st.session_state:
-                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
+            st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
         
     if  st.session_state.submitted:
             #form_place.empty()
