@@ -103,7 +103,7 @@ if agree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander("Test",expanded=not st.session_state.submitted):
+        with st.expander("Test",expanded=True):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
             #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
             #with formprompt:
@@ -141,7 +141,8 @@ if agree:
                             "answers": st.session_state.answers, 
                             }
 
-                #st.session_state.collection.insert_one(user_data)        
+            #st.session_state.collection.insert_one(user_data)  
+            
 
     if st.session_state.submitted:
         st.session_state.graded = []
