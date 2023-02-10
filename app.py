@@ -33,8 +33,8 @@ def format(option):
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (5, 1)
 
-st.header("🧐 **MIST** 🧐")
-st.text("Test your misinformation susceptibility.")
+st.markdown("<h1 style='text-align: center;'> 🧐 MIST 🧐 </h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'> Test your misinformation susceptibility </h2>", unsafe_allow_html=True)
 
 placeholder = st.empty()
 with placeholder.container():
