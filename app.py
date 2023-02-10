@@ -129,6 +129,7 @@ if agree:
         
     if  st.session_state.submitted:
         #form_place.empty()
+        pass
  
     with st.expander("Form Submitted",expanded=True):
         if st.session_state.submitted:
