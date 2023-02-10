@@ -194,9 +194,9 @@ if agree:
         st.markdown("")
         st.markdown("***")
         components.html(
-            """
+            f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
-            data-text="Test your misinformation susceptibility now! 🧐" 
+            data-text="I scored {10*st.session_state.score}% on veracity discernment, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! 🧐" 
             data-url="yourmist.streamlit.app"
             data-show-count="false">
             data-size="Large" 
