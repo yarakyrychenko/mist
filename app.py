@@ -178,12 +178,14 @@ if agree:
         st.markdown(f"###### You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
         st.markdown("")
         
+        st.session_state.score = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
+        
         st.markdown("##### 📈 Your MIST results")
-        st.markdown(f"**Veracity Discernment: {st.session_state.score}/20** *(ability to accurately distinguish real news from fake news)*")
-        st.markdown(f"**Real News Detection: {st.session_state.r}/10** *(ability to correctly identify real news)*")
-        st.markdown(f"**Fake News Detection: {st.session_state.f}/10** *(ability to correctly identify fake news)*")
-        st.markdown(f"**Distrust: {st.session_state.d}/10** *(negative judgment bias or being overly skeptical)*")
-        st.markdown(f"**Naïvité: {st.session_state.n}/10** *(positive judgment bias or being overly gullible)*")
+        st.markdown(f"**Veracity Discernment: {10*st.session_state.score}%** *(ability to accurately distinguish real news from fake news)*")
+        st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+        st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+        st.markdown(f"**Distrust/Naïvité: {st.session_state.n - st.session_state.d}** *(ranges from overly skeptical (-10) to overly gullible (+10))*")
+        #st.markdown(f"**Naïvité: {st.session_state.n - st.session_state.d}** *(positive judgment bias or being overly gullible)*")
 
         
         
