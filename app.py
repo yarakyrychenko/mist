@@ -10,9 +10,7 @@ import pandas as pd, numpy as np
 st.set_page_config(
     page_title="MIST",
     page_icon="🧐",
-    layout="wide",
-    menu_items={
-         'About': "# Test your misinformation susceptibility." }
+    layout="centered"
 )
 
 
