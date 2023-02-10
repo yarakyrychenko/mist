@@ -197,7 +197,7 @@ if agree:
             """
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
             data-text="Test your misinformation susceptibility now! 🧐" 
-            data-url="https://share.streamlit.io/yarakyrychenko/mist/main/app.py"
+            data-url="yourmist.streamlit.app"
             data-show-count="false">
             data-size="Large" 
             data-hashtags="misinformation,fakenews"
