@@ -111,7 +111,7 @@ if agree:
             #with formchoice:
             #    st.write(f"**{st.session_state.order[1]}**\t**{st.session_state.order[2]}**")
                     
-            j =0
+            j=0
             for i in st.session_state.items_order:
                 j+=1
                 #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
@@ -129,6 +129,29 @@ if agree:
         
     if  st.session_state.submitted:
         form_place.empty()
+        with st.expander("Test",expanded=False):
+            st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
+            #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
+            #with formprompt:
+            #    st.markdown("")
+            #with formchoice:
+            #    st.write(f"**{st.session_state.order[1]}**\t**{st.session_state.order[2]}**")
+                    
+            j=0
+            for i in st.session_state.items_order:
+                j+=1
+                #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
+                #with formprompt:
+                    #st.markdown("")
+                    #st.markdown(st.session_state.mist_items[i])
+                #with formchoice:
+                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+                     
+            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
+ 
+                #if st.session_state.disable:
+                   # st.warning("Please fill out every field of the form to enable the submit button.")   
+            st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
  
     with st.expander("Form Submitted",expanded=True):
         if st.session_state.submitted:
