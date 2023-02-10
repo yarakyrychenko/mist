@@ -125,8 +125,9 @@ if agree:
             st.session_state.disable = True if st.session_state.q20 == "" else False
  
                 #if st.session_state.disable:
-                   # st.warning("Please fill out every field of the form to enable the submit button.")              
-            st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
+                   # st.warning("Please fill out every field of the form to enable the submit button.")   
+            if "submitted" not in st.session_state:
+                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
         
     if  st.session_state.submitted:
             #form_place.empty()
@@ -172,18 +173,27 @@ if agree:
         st.session_state.score = int(np.sum(st.session_state.graded))
         
         if st.session_state.score > 15:
+            st.balloons()
             st.markdown("##### Congratulations!")
         if st.session_state.score <= 15:
             st.markdown("##### Good try!")
         
-        st.markdown(f"###### You're more resilient to misinformation than {st.session_state.ustable[st.session_state.score]}% of the US population and {st.session_state.uktable[st.session_state.score]}% of the UK!")
+        st.markdown(f"###### You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
+        st.markdown("")
         
         st.markdown("##### Your results:")
-        st.markdown(f"Veracity Discernment: {st.session_state.score}")
+        st.markdown("")
+        st.markdown(f"**Veracity Discernment: {st.session_state.score} out of 20**")
+        st.markdown("*ability to accurately distinguish real news from fake news*")
+        st.markdown("")
         st.markdown(f"Real News Detection: {st.session_state.r}")
+        st.markdown("*ability to correctly identify real news*")
         st.markdown(f"Fake News Detection: {st.session_state.f}")
+        st.markdown("*ability to correctly identify fake news*")
         st.markdown(f"Distrust: {st.session_state.d}")
+        st.markdown("*negative judgment bias or being overly skeptical*")
         st.markdown(f"Naïvité: {st.session_state.n}")
+        st.markdown("*positive judgment bias or being overly gullible*")
         
         
         st.markdown("")
