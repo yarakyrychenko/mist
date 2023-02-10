@@ -110,7 +110,7 @@ if agree:
             with formprompt:
                 st.markdown("")
             with formchoice:
-                st.write(f"{st.session_state.order[1]}\t{st.session_state.order[2]}")
+                st.write(f"**{st.session_state.order[1]}**\t**{st.session_state.order[2]}**")
                     
             j =0
             for i in st.session_state.items_order:
@@ -120,7 +120,7 @@ if agree:
                     st.write("")
                     st.markdown(st.session_state.mist_items[i])
                 with formchoice:
-                    st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="collapsed", horizontal=True))
+                    st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
             st.session_state.disable = True if st.session_state.q20 == "" else False
  
