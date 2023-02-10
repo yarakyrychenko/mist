@@ -33,7 +33,7 @@ def format(option):
     return ""
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
-st.session_state.radio_columns_params = (4.5, 1)
+st.session_state.radio_columns_params = (6, 1)
 
 st.markdown("<h1 style='text-align: center;'> 🧐 MIST 🧐 </h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center;'> Test your misinformation susceptibility </h2>", unsafe_allow_html=True)
@@ -43,7 +43,7 @@ with placeholder.container():
     with st.expander("Consent", expanded=True):
         st.markdown("""
             By submitting the form below you agree to your data being used for research. 
-            Your twitter handle will be stored in a private data base and will not be shared with anyone other than the researchers (unless extraordinary circumstances force us to). 
+            Your data will be stored in a private data base and will not be shared with anyone other than the researchers (unless extraordinary circumstances force us to). 
             You can ask for your data to be deleted by emailing us with an ID number you'll be issued after submitting the form. 
             """)
         agree = st.checkbox("I understand and consent.")
@@ -53,7 +53,7 @@ if agree:
     with st.expander("Consent", expanded=False):
         st.markdown("""
             By submitting the form below you agree to your data being used for research. 
-            Your twitter handle will be stored in a private data base and will not be shared with anyone other than the researchers (unless extraordinary circumstances force us to). 
+            Your data will be stored in a private data base and will not be shared with anyone other than the researchers (unless extraordinary circumstances force us to). 
             You can ask for your data to be deleted by emailing us with an ID number you'll be issued after submitting the form. 
             """)
         st.markdown("You have consented.")
