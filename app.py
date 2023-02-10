@@ -120,7 +120,7 @@ if agree:
                 with formchoice:
                     st.session_state.answers.append(st.radio("", st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="collapsed", horizontal=True))
                      
-            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) == 20 else False
+            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
  
                 #if st.session_state.disable:
                    # st.warning("Please fill out every field of the form to enable the submit button.")   
