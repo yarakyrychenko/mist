@@ -185,6 +185,7 @@ if agree or disagree:
         st.session_state.uktable = {1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:3, 8:5, 9:10, 10:23,
                                     11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
         st.session_state.score = int(np.sum(st.session_state.graded))
+        st.markdown(f"{dem_submitted}")
         
         if agree:
             demplaceholder = st.empty()
@@ -197,7 +198,9 @@ if agree or disagree:
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
-            dem_submitted = st.button("Submit",key="dem_sub")
+                dem_submitted = st.button("Submit",key="dem_sub")
+                st.markdown(f"{dem_submitted}")
+
 
         if disagree:
             demplaceholder = st.empty()
