@@ -14,7 +14,7 @@ Please direct all inquiries about this privacy policy or the academic study to Y
 
 The University of Cambridge Data Protection Officer can be contacted at dpo@admin.cam.ac.uk. 
 
-### Information we may collect about you
+### Information we may collect about you 
 
 We do not aim to collect or store any data that would allow us to identify individuals using this app. To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. If you do not consent to participating in this study, we do not collect any information on you. The information you choose to give us can include your Twitter handle, public information on your Twitter timeline retrieved though the Twitter API, and any questions you voluntarily choose to answer, which may include your age, level of education, political affiliation, or other demographic variables. Please note that the only information we can access from your Twitter profile is information that you make publicly available on the internet and choose to provide us with if you consent to participating in the study. This app will not work if you have set your Twitter account to private. It does not have access to any part of your Twitter account that is not already public on the internet. We do not collect any identifying information through our Web Site that will allow us to identify you personally. If you provide us with your Twitter handle, we will store it temporarily in hashed form (meaning that if your Twitter handle includes personally identifying information, we are not able to read it). All data that we collect will be stored on a password-protected computer that is only accessible to academic researchers at the University of Cambridge.
 
