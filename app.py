@@ -208,10 +208,10 @@ if agree or disagree:
         st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
         st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
         st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
-        st.session_state.good = "is great! 🤩" if st.session_state.score > 16 else "is good! 🙂" if st.session_state.score > 13 else "needs some work... 😢"
+        st.session_state.good = "is great**!" if st.session_state.score > 16 else "is good**!" if st.session_state.score > 13 else "needs some work**..."
         st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither skeptical nor gullible"
-        st.session_state.how = "a bit " if np.linalg.norm(st.session_state.dn) < 4 else "very " if np.linalg.norm(st.session_state.dn) < 8 else "too "
-        st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You might be {st.session_state.how}{st.session_state.skeptical} when it comes to the news.")
+        st.session_state.how = "a bit " if np.linalg.norm(st.session_state.dn) < 4 else "very " if np.linalg.norm(st.session_state.dn) < 8 else "overly "
+        st.markdown(f"👉 Your ability to recognize real and fake news **{st.session_state.good} You might be **{st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
         components.html(
             f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
