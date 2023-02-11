@@ -204,7 +204,7 @@ if agree or disagree:
                 form.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
                 form.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                 form.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                st.session_state.dem_submitted = form.checkbox("Submit",key="dem_sub")
+                st.session_state.dem_submitted = form.button("Submit",key="dem_sub")
                 st.session_state.submitted = True
 
         if st.session_state.dem_submitted:
