@@ -211,8 +211,7 @@ if agree or disagree:
         st.session_state.good = "is great! 🤩" if st.session_state.score > 16 else "is good! 🙂" if st.session_state.score > 13 else "needs some work... 😢"
         st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "gullible" if st.session_state.dn > 0 else "neither skeptical nor gullible"
         st.session_state.how = "a bit " if np.linalg.norm(st.session_state.dn) < 4 else "very " if np.linalg.norm(st.session_state.dn) < 8 else "overly "
-        st.markdown(f"Your ability to recognize real and fake news {st.session_state.good}")
-        st.markdown(f"You are {st.session_state.how}{st.session_state.skeptical} when it comes to the news.")
+        st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You might be {st.session_state.how}{st.session_state.skeptical} when it comes to the news.")
         components.html(
             f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
