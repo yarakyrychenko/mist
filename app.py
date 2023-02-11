@@ -50,7 +50,7 @@ with placeholder.container():
     with st.expander("Consent", expanded=True):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
-            This app is a part of a research study about misinformation susceptibility online. Please consider participating.
+            Please consider participating in our research study about misinformation susceptibility online.
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
@@ -74,7 +74,7 @@ if agree:
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
-            This app is a part of a research study about misinformation susceptibility online. Please consider participating.
+            Please consider participating in our research study about misinformation susceptibility online.
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
@@ -95,7 +95,7 @@ if disagree:
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
-            This app is a part of a research study about misinformation susceptibility online. Please consider participating.
+            Please consider participating in our research study about misinformation susceptibility online.
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
@@ -152,35 +152,20 @@ if agree or disagree:
         st.session_state.answers = []
             
         with st.expander("Test",expanded=True):
-            st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
-            #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
-            #with formprompt:
-            #    st.markdown("")
-            #with formchoice:
-            #    st.write(f"**{st.session_state.order[1]}**\t**{st.session_state.order[2]}**")
-                    
+            st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             j=0
             for i in st.session_state.items_order:
                 j+=1
-                #formprompt, formchoice = st.columns(st.session_state.radio_columns_params)
-                #with formprompt:
-                    #st.markdown("")
-                    #st.markdown(st.session_state.mist_items[i])
-                #with formchoice:
                 st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
- 
-                #if st.session_state.disable:
-                   # st.warning("Please fill out every field of the form to enable the submit button.")   
             st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
         
     if  st.session_state.submitted:
         #form_place.empty()
         pass
 
-            
-
+         
     if st.session_state.submitted:
         st.session_state.graded = []
         st.session_state.r = 0
@@ -236,11 +221,10 @@ if agree or disagree:
             data-show-count="false">
             data-size="Large" 
             data-hashtags="misinformation,fakenews"
-            Tweet
+            Tweet your score!
             </a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            """
-                   )
+            """)
         
         
         if agree:
