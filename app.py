@@ -157,7 +157,7 @@ if agree or disagree:
             st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
         st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-        st.button("Submit", disabled=st.session_state.disable, key="submitted")
+        st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
          
     if st.session_state.submitted:
 
@@ -196,19 +196,18 @@ if agree or disagree:
 
             optionalq = st.empty()
             with optionalq.container():
-                with st.expander("Optional Questions", expanded=True):
-                    st.markdown("##### Please answer a few more questions while we're calculating your score.") 
-                    st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
-                    st.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
-                    st.text_input('What is your age?', key="age")
-                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
-                    st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
-                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                    st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
+                form = st.expander("Optional Questions", expanded=True)
+                form.markdown("##### Please answer a few more questions while we're calculating your score.") 
+                form.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
+                form.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
+                form.text_input('What is your age?', key="age")
+                form.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
+                form.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
+                form.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
+                st.session_state.dem_submitted = form.button("Submit",key="dem_sub")
+                st.session_state.submitted = True
 
-if st.session_state.dem_submitted:
-    if True:
-        if True:
+        if st.session_state.dem_submitted:
             if True:
                 st.markdown("1")
                 st.markdown(f"{st.session_state.submitted}")
