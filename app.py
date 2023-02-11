@@ -161,6 +161,7 @@ if agree or disagree:
         
          
     if st.session_state.submitted:
+        st.markdown(f"{st.session_state.submitted}")
         st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
