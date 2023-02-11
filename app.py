@@ -111,6 +111,8 @@ if disagree:
 #   st.session_state.submitted = False
 if "disable" not in st.session_state:
     st.session_state.disable = True 
+if "dem_submitted" not in st.session_state:
+    st.session_state.dem_submitted = False 
 
 if agree or disagree:
 
@@ -202,10 +204,10 @@ if agree or disagree:
                     st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                    dem_submitted = st.button("Submit",key="dem_sub")
+                    st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
 
-    if dem_submitted:
+    if st.session_state.dem_submitted:
         if True:
             if True:
                 st.markdown("1")
