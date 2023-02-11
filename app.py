@@ -110,6 +110,7 @@ if disagree:
 
         
 st.session_state.submitted = False
+dem_submitted = False
 st.session_state.disable = True 
 
 if dem_submitted or disagree:
@@ -197,6 +198,7 @@ if dem_submitted or disagree:
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
             dem_submitted = st.button("Submit",key="dem_sub")
+
         if disagree:
             demplaceholder = st.empty()
     
