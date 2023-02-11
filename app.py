@@ -67,6 +67,7 @@ with placeholder.container():
         
 
 if agree:
+    st.session_state.dem_submitted = False
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
@@ -88,7 +89,7 @@ if agree:
         
 
 if disagree:
-    dem_submitted = True
+    st.session_state.dem_submitted = True
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
@@ -107,7 +108,6 @@ if disagree:
 
         This privacy policy was updated on Feb 11, 2023.
         """)
-
 
 st.session_state.submitted = False
 st.session_state.disable = True 
@@ -169,12 +169,13 @@ if agree or disagree:
                 st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
                 st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                 st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                dem_submitted = st.button("Submit",key="dem_sub")
+                st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
-    if dem_submitted:
-        demplaceholder.empty()
+    if agree:
+        if st.session_state.dem_submitted:
+            demplaceholder.empty()
          
-    if st.session_state.submitted and dem_submitted:
+    if st.session_state.submitted and st.session_state.dem_submitted:
         st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
