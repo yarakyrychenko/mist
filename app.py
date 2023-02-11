@@ -155,7 +155,7 @@ if agree or disagree:
             st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
         st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-        st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
+        st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="submitted")
          
     if st.session_state.submitted:
 
@@ -188,28 +188,28 @@ if agree or disagree:
         st.session_state.dn = st.session_state.n - st.session_state.d
         st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
 
-        if agree:
-            if "dem_submitted" not in st.session_state:
-                st.session_state.dem_submitted = False
+    if agree and st.session_state.submitted:
+        if "dem_submitted" not in st.session_state:
+            st.session_state.dem_submitted = False
 
-            with st.expander("Optional Questions", expanded=True):
-                st.markdown("##### Please answer a few more questions while we're calculating your score.") 
-                st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
-                st.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
-                st.text_input('What is your age?', key="age")
-                st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
-                st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
-                st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                dem_submitted = st.button("Submit",key="dem_sub")
+        with st.expander("Optional Questions", expanded=True):
+            st.markdown("##### Please answer a few more questions while we're calculating your score.") 
+            st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
+            st.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
+            st.text_input('What is your age?', key="age")
+            st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
+            st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
+            st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
+            dem_submitted = st.button("Submit",key="dem_sub")
 
-            if dem_submitted:
+        if dem_submitted:
 
-                if st.session_state.score > 16:
-                    st.balloons()
-                    st.header("🎉 Congratulations!")
-                if st.session_state.score <= 16:
-                    st.header("👍 Good try!")
-        
+            if st.session_state.score > 16:
+                st.balloons()
+                st.header("🎉 Congratulations!")
+            if st.session_state.score <= 16:
+                st.header("👍 Good try!")
+            if True:
                 st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
                 st.markdown("")
 
@@ -252,7 +252,8 @@ if agree or disagree:
                 #st.session_state.collection.insert_one(user_data) 
         
         
-        if disagree:
+    if disagree:
+        if True:
             if st.session_state.score > 16:
                 st.balloons()
                 st.header("🎉 Congratulations!")
