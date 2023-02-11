@@ -110,8 +110,10 @@ if disagree:
         This privacy policy was updated on Feb 11, 2023.
         """)
 
-st.session_state.submitted = False
-st.session_state.disable = True 
+if "submitted" not in st.session_state:
+    st.session_state.submitted = False
+if "disable" not in st.session_state:
+    st.session_state.disable = True 
 
 if agree or disagree:
 
