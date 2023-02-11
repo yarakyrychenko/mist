@@ -192,26 +192,18 @@ if agree or disagree:
             if "dem_submitted" not in st.session_state:
                 st.session_state.dem_submitted = False
 
-            demplaceholder = st.empty()
-            with demplaceholder.container():
-                with st.expander("Optional Questions", expanded=True):
-                    st.markdown("##### Please answer a few more questions while we're calculating your score.") 
-                    st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
-                    st.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
-                    st.text_input('What is your age?', key="age")
-                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
-                    st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
-                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                    st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
+            with st.expander("Optional Questions", expanded=True):
+                st.markdown("##### Please answer a few more questions while we're calculating your score.") 
+                st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
+                st.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
+                st.text_input('What is your age?', key="age")
+                st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
+                st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
+                st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
+                st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
             if st.session_state.dem_submitted:
-                demplaceholder.empty()
-                with st.expander("Optional Questions", expanded=False):
-                    st.markdown("You submitted.")
-                    st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
 
-            if st.session_state.dem_submitted:
-                
                 if st.session_state.score > 16:
                     st.balloons()
                     st.header("🎉 Congratulations!")
