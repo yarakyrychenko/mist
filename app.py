@@ -203,9 +203,11 @@ if agree or disagree:
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
                     dem_submitted = st.button("Submit",key="dem_sub")
-                    st.markdown("3")
 
-            if dem_submitted:
+
+    if dem_submitted:
+        if True:
+            if True:
                 st.markdown("1")
                 st.markdown(f"{st.session_state.submitted}")
                 optionalq.empty()
