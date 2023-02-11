@@ -109,13 +109,11 @@ if disagree:
         """)
 
         
-st.session_state.submitted = False
 dem_submitted = False
 st.session_state.disable = True 
 
 if agree or disagree:
-
-    if True:
+    if not st.session_state.submitted:
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -159,7 +157,6 @@ if agree or disagree:
             st.button("Submit", disabled=st.session_state.disable, key="submitted")
          
     if st.session_state.submitted:
-        st.markdown(f"{st.session_state.submitted}")
         st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
