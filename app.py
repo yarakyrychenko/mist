@@ -27,6 +27,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown(
+    """<style>
+div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
+    font-size: 16px;
+}
+    </style>
+    """, unsafe_allow_html=True)
+
 def format(option):
     return "Real" if option == "Real" else "Fake"
 
