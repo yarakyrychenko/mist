@@ -42,6 +42,11 @@ All information you provide to Us is stored on secure servers held in both the E
 
 Once We have received your information, we will use strict procedures and security features to try to prevent unauthorised access. We retain personal information for as long as need or permitted in light of the purpose(s) for which it was obtained and consistent with the applicable law.
 
+### Data Sharing to Comply with Open Science Standards
+
+In order to comply with open sciences standards administered by academic journals, we may share limited raw data on open science platforms so that others can replicate or re-analyze it. This data will exclude any personally identifiable information (age, gender, etc.) from the self-report questions so that there are no privacy risks or risks of de-identifying individuals. Instead, will only show the aggregate counts of certain websites visited by each user. For example, a row of raw data may look like this: “User 1 – Liberal sites shared: 2, Conservative sites shared: 4”. We will only show data taken from public Twitter accounts, and not the information that you share about your personal preferences or demographic characteristics. 
+
+
 ### Deleting Data
 
 If you wish to delete your data, we generate a unique, anonymous, randomly generated ID, and you can use it to request deletion of your data. Your user ID is shown after you fill out the consent form and in the “about” section of the app. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data.
