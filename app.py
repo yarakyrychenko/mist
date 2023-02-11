@@ -107,8 +107,8 @@ if disagree:
         This privacy policy was updated on Feb 11, 2023.
         """)
 
-if "submitted" not in st.session_state:
-    st.session_state.submitted = False
+#if "submitted" not in st.session_state:
+#   st.session_state.submitted = False
 if "disable" not in st.session_state:
     st.session_state.disable = True 
 
@@ -155,7 +155,7 @@ if agree or disagree:
             st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
         st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-        st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="submitted")
+        st.button("Submit", disabled=st.session_state.disable, key="submitted")
          
     if st.session_state.submitted:
 
