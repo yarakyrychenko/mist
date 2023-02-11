@@ -88,6 +88,7 @@ if agree:
         
 
 if disagree:
+    dem_submitted = False
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
