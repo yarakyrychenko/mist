@@ -189,12 +189,12 @@ if dem_submitted or disagree:
             demplaceholder = st.empty()
             with demplaceholder.container():
                 with st.expander("Optional Questions", expanded=True):
-                st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
-                st.text_input('What is your Twitter handle?', key="twitter_handle")
-                st.text_input('What is your age?', key="age")
-                st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
-                st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
-                st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
+                    st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
+                    st.text_input('What is your Twitter handle?', key="twitter_handle")
+                    st.text_input('What is your age?', key="age")
+                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
+                    st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
+                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
             dem_submitted = st.button("Submit",key="dem_sub")
         if disagree:
