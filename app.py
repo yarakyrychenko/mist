@@ -67,8 +67,6 @@ with placeholder.container():
         
 
 if agree:
-    if 'dem_submitted' not in st.session_state:
-        st.session_state.dem_submitted = False
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
@@ -90,7 +88,6 @@ if agree:
         
 
 if disagree:
-    st.session_state.dem_submitted = False
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
@@ -150,17 +147,18 @@ if agree or disagree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander("Test",expanded=True):
-            st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
-            j=0
-            for i in st.session_state.items_order:
-                j+=1
-                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+        #with st.expander("Test",expanded=True):
+        st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
+        j=0
+        for i in st.session_state.items_order:
+            j+=1
+            st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
-            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-            st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
+        st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
+        st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
          
     if st.session_state.submitted:
+        st.markdown("yay")
 
         st.session_state.graded = []
         st.session_state.r = 0
@@ -192,6 +190,9 @@ if agree or disagree:
         st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
 
         if agree:
+            if "dem_submitted" not in st.session_state:
+                st.session_state.dem_submitted = False
+
             demplaceholder = st.empty()
             with demplaceholder.container():
                 with st.expander("Optional Questions", expanded=True):
@@ -209,7 +210,7 @@ if agree or disagree:
                 with st.expander("Optional Questions", expanded=False):
                     st.markdown("You submitted.")
                     st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
-                    
+
                 if st.session_state.score > 16:
                     st.balloons()
                     st.header("🎉 Congratulations!")
