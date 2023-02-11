@@ -164,16 +164,17 @@ if agree or disagree:
             with st.expander("Optional Questions", expanded=True):
                 st.markdown("##### Please answer a few more questions while we're calculating your score.") 
                 st.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
-                st.text_input('What is your Twitter handle?', key="twitter_handle")
+                st.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
                 st.text_input('What is your age?', key="age")
                 st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
                 st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                 st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
                 dem_submitted = st.button("Submit",key="dem_sub")
-    
+
+    if dem_submitted:
+        demplaceholder.empty()
          
     if st.session_state.submitted and dem_submitted:
-        demplaceholder.empty()
         st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
