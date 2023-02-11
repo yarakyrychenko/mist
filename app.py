@@ -206,8 +206,8 @@ if agree or disagree:
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
                     st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
-
-    if st.session_state.dem_submitted:
+if st.session_state.dem_submitted:
+    if True:
         if True:
             if True:
                 st.markdown("1")
