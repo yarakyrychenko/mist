@@ -203,15 +203,21 @@ if agree or disagree:
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
                     dem_submitted = st.button("Submit",key="dem_sub")
+                    st.markdown("3")
+
             if dem_submitted:
+                st.markdown("1")
+                st.markdown(f"{st.session_state.submitted}")
                 optionalq.empty()
+                st.markdown("2")
+                st.markdown(f"{st.session_state.submitted}")
 
                 if st.session_state.score > 16:
                     st.balloons()
                     st.header("🎉 Congratulations!")
                 if st.session_state.score <= 16:
                     st.header("👍 Good try!")
-                    
+
                 st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
                 st.markdown("")
 
