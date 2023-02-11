@@ -61,7 +61,7 @@ with placeholder.container():
         st.markdown("""
         To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This may include your Twitter handle, publically available information on your Twitter timeline, and any questions you voluntarily choose to answer. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we will generate an anonymous ID you can use to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. This project has been reviewed by the Cambridge Psychology Research Ethics Committee. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
         
-        To view the full privacy policy, please click [here](https://github.com/yarakyrychenko/mist/blob/d747370621a5e545e1a30f8e9cbb64294a61eaa8/PrivacyPolicy.md).
+        To view the full privacy policy, please click [here](https://github.com/yarakyrychenko/mist/blob/main/PrivacyPolicy.md).
 
         This privacy policy was updated on Feb 11, 2023.
         """)
@@ -82,7 +82,7 @@ if agree:
         st.markdown("""
         To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This may include your Twitter handle, publically available information on your Twitter timeline, and any questions you voluntarily choose to answer. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we will generate an anonymous ID you can use to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. This project has been reviewed by the Cambridge Psychology Research Ethics Committee. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
         
-        To view the full privacy policy, please click [here](https://github.com/yarakyrychenko/mist/blob/d747370621a5e545e1a30f8e9cbb64294a61eaa8/PrivacyPolicy.md).
+        To view the full privacy policy, please click [here](https://github.com/yarakyrychenko/mist/blob/main/PrivacyPolicy.md).
 
         This privacy policy was updated on Feb 11, 2023.
         """)
@@ -103,7 +103,7 @@ if disagree:
         st.markdown("""
         To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This may include your Twitter handle, publically available information on your Twitter timeline, and any questions you voluntarily choose to answer. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we will generate an anonymous ID you can use to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. This project has been reviewed by the Cambridge Psychology Research Ethics Committee. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
         
-        To view the full privacy policy, please click [here](https://github.com/yarakyrychenko/mist/blob/d747370621a5e545e1a30f8e9cbb64294a61eaa8/PrivacyPolicy.md).
+        To view the full privacy policy, please click [here](https://github.com/yarakyrychenko/mist/blob/main/PrivacyPolicy.md).
 
         This privacy policy was updated on Feb 11, 2023.
         """)
