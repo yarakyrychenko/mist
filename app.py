@@ -38,8 +38,6 @@ div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
 def format(option):
     return "Real" if option == "Real" else "Fake"
 
-st.session_state.one_columns_params = (.1, 3.2, .1)
-st.session_state.radio_columns_params = (5, 1)
 
 st.header("🧐 MIST Misinformation Susceptibility Test 🧐")
 st.subheader("Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.")
@@ -113,7 +111,6 @@ if disagree:
       
 st.session_state.submitted = False
 st.session_state.disable = True 
-st.session_state.two_columns_params = (.1, 1.5, .2, 1.5, .1)
 
 if agree or disagree:
 
@@ -193,10 +190,10 @@ if agree or disagree:
                                     11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
         st.session_state.score = int(np.sum(st.session_state.graded))
         
-        if st.session_state.score > 15:
+        if st.session_state.score > 16:
             st.balloons()
             st.header("🎉 Congratulations!")
-        if st.session_state.score <= 15:
+        if st.session_state.score <= 16:
             st.header("👍 Good try!")
         
         st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
@@ -211,17 +208,20 @@ if agree or disagree:
         st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
         st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
         st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
-  
-        st.markdown("")
+        st.session_state.good = "is great! 🤩" if st.session_state.score > 16 else "is good! 🙂" if st.session_state.score > 13 else "needs some work... 😢"
+        st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "gullible" if st.session_state.dn > 0 else "neither skeptical nor gullible"
+        st.session_state.how = "a bit " if np.linalg.norm(st.session_state.dn) < 4 else "very " if np.linalg.norm(st.session_state.dn) < 8 else "overly "
+        st.markdown(f"Your ability to recognize real and fake news {st.session_state.good}")
+        st.markdown(f"You are {st.session_state.how}{st.session_state.skeptical} when it comes to the news.")
         components.html(
             f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
             data-text="I scored {10*st.session_state.score_print}% on veracity discernment, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! 🧐" 
             data-url="yourmist.streamlit.app"
-            data-show-count="false">
+            data-show-count="false"
             data-size="Large" 
-            data-hashtags="misinformation,fakenews"
-            Tweet your score!
+            data-hashtags="misinformation,fakenews">
+            Tweet
             </a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
