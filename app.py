@@ -13,7 +13,6 @@ st.set_page_config(
     #layout="wide"
 )
 
-
 sns.set(rc={'figure.figsize':(4,5)})
 sns.set_style("whitegrid")
 
@@ -76,7 +75,7 @@ if agree:
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
-        st.markdown("You have agreed and consented.")
+        st.markdown("**You consented.**")
         st.markdown("")
         st.markdown("###### Privacy Policy")
         st.markdown("""
@@ -97,7 +96,7 @@ if disagree:
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
-        st.markdown("You did not consent.")
+        st.markdown("**You did not consent.**")
         st.markdown("")
         st.markdown("###### Privacy Policy")
         st.markdown("""
@@ -108,11 +107,20 @@ if disagree:
         This privacy policy was updated on Feb 11, 2023.
         """)
         
-      
+if agree:
+    st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
+    st.text_input('What is your Twitter handle?', key="twitter_handle")
+    st.text_input('What is your age?', key="age")
+    st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
+    st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
+    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
+
+    dem_submitted = st.button("Submit")
+
 st.session_state.submitted = False
 st.session_state.disable = True 
 
-if agree or disagree:
+if dem_submitted or disagree:
 
     form_place = st.empty()
     with form_place.container():
