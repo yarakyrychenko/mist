@@ -29,8 +29,6 @@ st.markdown(
 
 def format(option):
     return "Real" if option == "Real" else "Fake"
-def consent_format(option):
-    return "Yes, I consent" if option == "Yes, I consent" else "No, I do not consent"
 
 st.session_state.one_columns_params = (.1, 3.2, .1)
 st.session_state.radio_columns_params = (5, 1)
@@ -47,10 +45,8 @@ with placeholder.container():
             This app is a part of a research study about misinformation susceptibility online. Please consider participating.
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
-            
-            **Do you consent to participating in this study and sharing anonymized information?**
             """)
-        st.radio(" ", ["","Yes, I consent", "No, I do not consent"], key = "consent", format_func=consent_format, label_visibility="hidden", horizontal=True)
+        st.radio("###### Do you consent to participating in this study and sharing anonymized information?", ["","Yes, I consent", "No, I do not consent"], key = "consent",label_visibility="visible", horizontal=True)
         agree = st.session_state.consent == "Yes, I consent" 
         disagree = st.session_state.consent == "No, I do not consent" 
         
