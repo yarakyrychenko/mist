@@ -72,56 +72,50 @@ with placeholder.container():
 if agree:
     placeholder.empty()
     with st.expander("Consent", expanded=False):
-        st.markdown("###### Take Part in Our Study")
+        st.markdown("##### Take Part in Our Study")
         st.markdown("""
-            This app was created as part of an academic research study. **Do you consent to participating in this study and sharing anonymized information from your use of this app?**
+            This app is a part of a research study about misinformation susceptibility online. Please consider participating.
             
-            All data will be kept completely anonymous. You must be 18 years or older to participate. This project has been reviewed by the Cambridge Psychology Research Ethics Committee.
-            
-            If you consent to participating in this study, click 'Yes, I consent.' If you do not want to participate in the study or share your data, click 'No, I do not consent.' If you click 'No, I do not consent,' you can still use the app without sharing your data.
+            All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
+        st.markdown("You have agreed and consented.")
+        st.markdown("")
         st.markdown("###### Privacy Policy")
         st.markdown("""
-        To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This includes your Twitter handle, public information on your Twitter timeline retrieved though the Twitter API, and any questions you voluntarily choose to answer. Please note that the only information we can access from your Twitter profile is information that you make publically available on the internet. This app will not work if you have set your Twitter account to private. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we generate a unique, anonymous, randomly generated ID, and you can use it to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
+        To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This may include your Twitter handle, publically available information on your Twitter timeline, and any questions you voluntarily choose to answer. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we will generate an anonymous ID you can use to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. This project has been reviewed by the Cambridge Psychology Research Ethics Committee. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
         
         To view the full privacy policy, please click here.
 
-        This privacy policy was updated on Jan 12, 2020.
+        This privacy policy was updated on Feb 11, 2023.
         """)
-        st.markdown("You have agreed and consented.")
+        
 
 if disagree:
     placeholder.empty()
     with st.expander("Consent", expanded=False):
-        st.markdown("###### Take Part in Our Study")
+        st.markdown("##### Take Part in Our Study")
         st.markdown("""
-            This app was created as part of an academic research study. **Do you consent to participating in this study and sharing anonymized information from your use of this app?**
+            This app is a part of a research study about misinformation susceptibility online. Please consider participating.
             
-            All data will be kept completely anonymous. You must be 18 years or older to participate. This project has been reviewed by the Cambridge Psychology Research Ethics Committee.
-            
-            If you consent to participating in this study, click 'Yes, I consent.' If you do not want to participate in the study or share your data, click 'No, I do not consent.' If you click 'No, I do not consent,' you can still use the app without sharing your data.
+            All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             """)
+        st.markdown("You did not consent.")
+        st.markdown("")
         st.markdown("###### Privacy Policy")
         st.markdown("""
-        To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This includes your Twitter handle, public information on your Twitter timeline retrieved though the Twitter API, and any questions you voluntarily choose to answer. Please note that the only information we can access from your Twitter profile is information that you make publically available on the internet. This app will not work if you have set your Twitter account to private. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we generate a unique, anonymous, randomly generated ID, and you can use it to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
+        To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This may include your Twitter handle, publically available information on your Twitter timeline, and any questions you voluntarily choose to answer. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we will generate an anonymous ID you can use to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. This project has been reviewed by the Cambridge Psychology Research Ethics Committee. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
         
         To view the full privacy policy, please click here.
 
-        This privacy policy was updated on Jan 12, 2020.
+        This privacy policy was updated on Feb 11, 2023.
         """)
-        st.markdown("You did not consent.")
+        
       
 st.session_state.submitted = False
 st.session_state.disable = True 
 st.session_state.two_columns_params = (.1, 1.5, .2, 1.5, .1)
 
 if agree or disagree:
-    import pymongo
-
-    #client = pymongo.MongoClient(st.secrets["mongo"])
-    #db = client.polarization
-    #st.session_state.collection = db.app
-
 
     form_place = st.empty()
     with form_place.container():
@@ -248,10 +242,18 @@ if agree or disagree:
             """
                    )
         
-        st.markdown("***")
-        st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
-        st.markdown(f"Thanks for submitting your answers! Your app ID is **{st.session_state.id}**. [Email us](mailto:yara@nyu.edu) with it if you want your answers deleted.") 
-        user_data = {
+        
+        if agree:
+            st.markdown("***")
+            #import pymongo
+
+            #client = pymongo.MongoClient(st.secrets["mongo"])
+            #db = client.polarization
+            #st.session_state.collection = db.app
+            
+            st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
+            st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. [Email us](mailto:yk408@cam.ac.uk) with it if you want your answers deleted.") 
+            user_data = {
                             "id": st.session_state.id, 
                             "answers": st.session_state.answers, 
                             }
