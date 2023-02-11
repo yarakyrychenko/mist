@@ -204,6 +204,9 @@ if agree or disagree:
                     st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
             if st.session_state.dem_submitted:
                 demplaceholder.empty()
+
+            if st.session_state.dem_submitted:
+
                 if st.session_state.score > 16:
                     st.balloons()
                     st.header("🎉 Congratulations!")
