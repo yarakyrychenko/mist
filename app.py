@@ -55,7 +55,7 @@ with placeholder.container():
         To view the full privacy policy, please click here.
 
         This privacy policy was updated on Jan 12, 2020. </font>
-        """unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
         agree = st.button("Yes, I consent.")
         disagree = st.button("No, I do not consent.")
 
