@@ -41,21 +41,21 @@ placeholder = st.empty()
 with placeholder.container():
     with st.expander("Consent", expanded=True):
         st.markdown("###### Take Part in Our Study")
-        st.markdown("""<font size="1">
+        st.markdown("""
             This app was created as part of an academic research study. **Do you consent to participating in this study and sharing anonymized information from your use of this app?**
             
             All data will be kept completely anonymous. You must be 18 years or older to participate. This project has been reviewed by the Cambridge Psychology Research Ethics Committee.
             
-            If you consent to participating in this study, click 'Yes, I consent.' If you do not want to participate in the study or share your data, click 'No, I do not consent.' If you click 'No, I do not consent,' you can still use the app without sharing your data.</font>
-            """, unsafe_allow_html=True)
+            If you consent to participating in this study, click 'Yes, I consent.' If you do not want to participate in the study or share your data, click 'No, I do not consent.' If you click 'No, I do not consent,' you can still use the app without sharing your data.
+            """)
         st.markdown("###### Privacy Policy")
-        st.markdown("""<font size="1">
+        st.markdown("""
         To safeguard your privacy, we will only collect data on information you choose to share with us if you consent to participating in the study. This includes your Twitter handle, public information on your Twitter timeline retrieved though the Twitter API, and any questions you voluntarily choose to answer. Please note that the only information we can access from your Twitter profile is information that you make publically available on the internet. This app will not work if you have set your Twitter account to private. Aggregate data will be used for research purposes to understand people's social media behavior. Limited, de-identified raw data may also be shared (with strict privacy protections to ensure no personal data is identifiable) to conform with open science pratices by academic journals. If you wish to delete your data, we generate a unique, anonymous, randomly generated ID, and you can use it to request deletion of your data. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data. Please direct all inquiries about this consent form or privacy policy to Yara Kyrychenko (yk408@cam.ac.uk).
         
         To view the full privacy policy, please click here.
 
-        This privacy policy was updated on Jan 12, 2020. </font>
-        """, unsafe_allow_html=True)
+        This privacy policy was updated on Jan 12, 2020.
+        """)
         agree = st.button("Yes, I consent.")
         disagree = st.button("No, I do not consent.")
 
@@ -64,7 +64,7 @@ if agree:
     with st.expander("Consent", expanded=False):
         st.markdown("###### Take Part in Our Study")
         st.markdown("""
-            This app was created as part of an academic research study. Do you consent to participating in this study and sharing anonymized information from your use of this app?
+            This app was created as part of an academic research study. **Do you consent to participating in this study and sharing anonymized information from your use of this app?**
             
             All data will be kept completely anonymous. You must be 18 years or older to participate. This project has been reviewed by the Cambridge Psychology Research Ethics Committee.
             
@@ -85,7 +85,7 @@ if disagree:
     with st.expander("Consent", expanded=False):
         st.markdown("###### Take Part in Our Study")
         st.markdown("""
-            This app was created as part of an academic research study. Do you consent to participating in this study and sharing anonymized information from your use of this app?
+            This app was created as part of an academic research study. **Do you consent to participating in this study and sharing anonymized information from your use of this app?**
             
             All data will be kept completely anonymous. You must be 18 years or older to participate. This project has been reviewed by the Cambridge Psychology Research Ethics Committee.
             
