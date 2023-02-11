@@ -114,7 +114,7 @@ if "disable" not in st.session_state:
 
 if agree or disagree:
 
-    with st.container():
+    with st.expander("Test", expanded=True):
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -158,7 +158,6 @@ if agree or disagree:
         st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
          
     if st.session_state.submitted:
-        st.markdown("yay")
 
         st.session_state.graded = []
         st.session_state.r = 0
