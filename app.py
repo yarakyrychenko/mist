@@ -88,6 +88,7 @@ if agree:
         
 
 if disagree:
+    dem_submitted = False
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
@@ -107,16 +108,13 @@ if disagree:
         This privacy policy was updated on Feb 11, 2023.
         """)
 
-#if "submitted" not in st.session_state:
-#   st.session_state.submitted = False
-if "disable" not in st.session_state:
-    st.session_state.disable = True 
-if "dem_submitted" not in st.session_state:
-    st.session_state.dem_submitted = False 
+        
+st.session_state.submitted = False
+st.session_state.disable = True 
 
-if agree or disagree:
+if dem_submitted or disagree:
 
-    with st.expander("Test", expanded=True):
+    if True:
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -149,18 +147,18 @@ if agree or disagree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        #with st.expander("Test",expanded=True):
-        st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
-        j=0
-        for i in st.session_state.items_order:
-            j+=1
-            st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+        with st.expander("Test",expanded=True):
+            st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
+            j=0
+            for i in st.session_state.items_order:
+                j+=1
+                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
-        st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-        st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
+            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
+            st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable)
+        
          
     if st.session_state.submitted:
-
         st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
@@ -186,85 +184,25 @@ if agree or disagree:
         st.session_state.uktable = {1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:3, 8:5, 9:10, 10:23,
                                     11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
         st.session_state.score = int(np.sum(st.session_state.graded))
-        st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
-        st.session_state.dn = st.session_state.n - st.session_state.d
-        st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
-
+        
         if agree:
-            if "dem_submitted" not in st.session_state:
-                st.session_state.dem_submitted = False
+            demplaceholder = st.empty()
+            with demplaceholder.container():
+                with st.expander("Optional Questions", expanded=True):
+                st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
+                st.text_input('What is your Twitter handle?', key="twitter_handle")
+                st.text_input('What is your age?', key="age")
+                st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
+                st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
+                st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
-            optionalq = st.empty()
-            with optionalq.container():
-                form = st.expander("Optional Questions", expanded=True)
-                form.markdown("##### Please answer a few more questions while we're calculating your score.") 
-                form.markdown("*Your answers to these questions are not taken into considerations in your MIST results.*")
-                form.text_input("What is your Twitter handle? *(we won't do anything weird)*", key="twitter_handle")
-                form.text_input('What is your age?', key="age")
-                form.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
-                form.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
-                form.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                st.session_state.dem_submitted = form.button("Submit",key="dem_sub")
-                st.session_state.submitted = True
+            dem_submitted = st.button("Submit",key="dem_sub")
+        if disagree:
+            demplaceholder = st.empty()
+    
+        if dem_submitted or disagree:
+            demplaceholder.empty()
 
-        if st.session_state.dem_submitted:
-            if True:
-                st.markdown("1")
-                st.markdown(f"{st.session_state.submitted}")
-                optionalq.empty()
-                st.markdown("2")
-                st.markdown(f"{st.session_state.submitted}")
-
-                if st.session_state.score > 16:
-                    st.balloons()
-                    st.header("🎉 Congratulations!")
-                if st.session_state.score <= 16:
-                    st.header("👍 Good try!")
-
-                st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
-                st.markdown("")
-
-                st.subheader("📈 Your MIST results")
-                st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-                st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-                st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
-                st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
-                st.session_state.good = "is **great**!" if st.session_state.score > 16 else "is **good**!" if st.session_state.score > 13 else "**needs some work**..."
-                st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither too skeptical nor too gullible"
-                st.session_state.how = "might be **a bit " if np.linalg.norm(st.session_state.dn) < 4 else "might be **very " if np.linalg.norm(st.session_state.dn) < 8 else "might be **overly "
-                st.session_state.how = st.session_state.how if st.session_state.dn != 0 else "are **"
-                st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
-                components.html(
-                f"""
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
-                data-text="I scored {10*st.session_state.score_print}% on veracity discernment, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! 🧐" 
-                data-url="yourmist.streamlit.app"
-                data-show-count="false"
-                data-size="Large" 
-                data-hashtags="misinformation,fakenews">
-                Tweet
-                </a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                """)
-
-                st.markdown("***")
-                #import pymongo
-
-                #client = pymongo.MongoClient(st.secrets["mongo"])
-                #db = client.polarization
-                #st.session_state.collection = db.app
-            
-                st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
-                st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. [Email us](mailto:yk408@cam.ac.uk) with it if you want your answers deleted.") 
-                user_data = {
-                            "id": st.session_state.id, 
-                            "answers": st.session_state.answers, 
-                            }
-                #st.session_state.collection.insert_one(user_data) 
-        
-        
-    if disagree:
-        if True:
             if st.session_state.score > 16:
                 st.balloons()
                 st.header("🎉 Congratulations!")
@@ -273,7 +211,11 @@ if agree or disagree:
         
             st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
             st.markdown("")
-
+        
+            st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
+            st.session_state.dn = st.session_state.n - st.session_state.d
+            st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
+        
             st.subheader("📈 Your MIST results")
             st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
             st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -296,4 +238,21 @@ if agree or disagree:
             </a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
-         
+        
+        
+        if agree:
+            st.markdown("***")
+            #import pymongo
+
+            #client = pymongo.MongoClient(st.secrets["mongo"])
+            #db = client.polarization
+            #st.session_state.collection = db.app
+            
+            st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
+            st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. [Email us](mailto:yk408@cam.ac.uk) with it if you want your answers deleted.") 
+            user_data = {
+                            "id": st.session_state.id, 
+                            "answers": st.session_state.answers, 
+                            }
+
+            #st.session_state.collection.insert_one(user_data)  
