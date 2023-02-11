@@ -114,7 +114,7 @@ dem_submitted = False
 st.session_state.disable = True 
 
 if agree or disagree:
-    if not st.session_state.submitted:
+    if True:
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -155,7 +155,10 @@ if agree or disagree:
                 st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                      
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-            st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
+            if not st.session_state.submitted:
+                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
+            else:
+                st.button("Submit", disabled=st.session_state.disable, key="sub")
          
     if st.session_state.submitted:
         st.session_state.graded = []
@@ -183,7 +186,6 @@ if agree or disagree:
         st.session_state.uktable = {1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:3, 8:5, 9:10, 10:23,
                                     11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
         st.session_state.score = int(np.sum(st.session_state.graded))
-        st.markdown(f"{dem_submitted}")
 
         if agree:
             demplaceholder = st.empty()
@@ -197,8 +199,6 @@ if agree or disagree:
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
                 dem_submitted = st.button("Submit",key="dem_sub")
-                st.markdown(f"{dem_submitted}")
-
 
         if disagree:
             demplaceholder = st.empty()
