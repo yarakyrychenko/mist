@@ -117,8 +117,7 @@ if "disable" not in st.session_state:
 
 if agree or disagree:
 
-    form_place = st.empty()
-    with form_place.container():
+    with st.container():
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -204,11 +203,9 @@ if agree or disagree:
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
                     st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
+
             if st.session_state.dem_submitted:
                 demplaceholder.empty()
-
-            if st.session_state.dem_submitted:
-
                 if st.session_state.score > 16:
                     st.balloons()
                     st.header("🎉 Congratulations!")
