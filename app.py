@@ -113,7 +113,7 @@ st.session_state.submitted = False
 dem_submitted = False
 st.session_state.disable = True 
 
-if dem_submitted or disagree:
+if agree or disagree:
 
     if True:
         st.session_state.mist_items = [
