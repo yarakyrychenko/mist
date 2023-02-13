@@ -204,7 +204,7 @@ if agree or disagree:
 
         if st.session_state.dem_submitted:
             demplaceholder.empty()
-            with st.expander("Optional Questions", expanded=False):
+            with st.expander("Optional Questions", expanded=True):
                 st.markdown("Thank you for submitting the optional questions!")
                 st.markdown("*Your answers to the questions are not taken into considerations when calculating your MIST results.*")
 
