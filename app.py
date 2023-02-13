@@ -198,13 +198,15 @@ if agree or disagree:
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
-                dem_submitted = st.button("Submit",key="dem_sub")
+                    dem_submitted = st.button("Submit",key="dem_sub")
 
-        if disagree:
-            demplaceholder = st.empty()
-    
-        if dem_submitted or disagree:
+        if dem_submitted:
             demplaceholder.empty()
+            with st.expander("Optional Questions", expanded=False):
+                st.markdown("Thank you for submitting the optional questions!")
+                st.markdown("*Your answers to the questions are not taken into considerations when calculating your MIST results.*")
+
+        if dem_submitted or disagree:
 
             if st.session_state.score > 16:
                 st.balloons()
@@ -228,7 +230,7 @@ if agree or disagree:
             st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither too skeptical nor too gullible"
             st.session_state.how = "might be **a bit " if np.linalg.norm(st.session_state.dn) < 4 else "might be **very " if np.linalg.norm(st.session_state.dn) < 8 else "might be **overly "
             st.session_state.how = st.session_state.how if st.session_state.dn != 0 else "are **"
-            st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+            st.markdown(f"#####👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
             components.html(
             f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
@@ -242,8 +244,7 @@ if agree or disagree:
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
         
-        
-        if agree:
+        if dem_submitted:
             st.markdown("***")
             #import pymongo
 
@@ -257,5 +258,7 @@ if agree or disagree:
                             "id": st.session_state.id, 
                             "answers": st.session_state.answers, 
                             }
-
-            #st.session_state.collection.insert_one(user_data)  
+            
+            if "inserted" not in st.session_state:
+                st.session_state.inserted = True
+                #st.session_state.collection.insert_one(user_data)  
