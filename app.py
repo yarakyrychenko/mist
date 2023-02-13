@@ -188,7 +188,7 @@ if agree or disagree:
                                     11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
         st.session_state.score = int(np.sum(st.session_state.graded))
 
-        if agree:
+        if agree and not st.session_state.dem_submitted:
             demplaceholder = st.empty()
             with demplaceholder.container():
                 with st.expander("Optional Questions", expanded=True):
