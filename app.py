@@ -88,7 +88,7 @@ if agree:
         
 
 if disagree:
-    dem_submitted = False
+    st.session_state.dem_submitted = False
     placeholder.empty()
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
@@ -110,7 +110,8 @@ if disagree:
 
 if "submitted" not in st.session_state:
     st.session_state.submitted = False        
-dem_submitted = False
+if "dem_submitted" not in st.session_state:
+    st.session_state.dem_submitted = False        
 st.session_state.disable = True 
 
 if agree or disagree:
@@ -198,15 +199,15 @@ if agree or disagree:
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
 
-                    dem_submitted = st.button("Submit",key="dem_sub")
+                    st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
-        if dem_submitted:
+        if st.session_state.dem_submitted:
             demplaceholder.empty()
             with st.expander("Optional Questions", expanded=False):
                 st.markdown("Thank you for submitting the optional questions!")
                 st.markdown("*Your answers to the questions are not taken into considerations when calculating your MIST results.*")
 
-        if dem_submitted or disagree:
+        if st.session_state.dem_submitted or disagree:
 
             if st.session_state.score > 16:
                 st.balloons()
@@ -244,7 +245,7 @@ if agree or disagree:
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
         
-        if dem_submitted:
+        if st.session_state.dem_submitted:
             st.markdown("***")
             #import pymongo
 
