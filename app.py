@@ -38,7 +38,7 @@ def format(option):
     return "Real" if option == "Real" else "Fake"
 
 
-st.header("🧐 MIST Misinformation Susceptibility Test 🧐")
+st.header("🧐 MIST Misinformation Susceptibility Test")
 st.subheader("Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.")
 st.markdown("*It only takes 2 minutes!*")
 
@@ -217,7 +217,7 @@ if agree or disagree:
             elif 13 < st.session_state.score <= 16:
                 st.header("👍 Good try!")
             else:
-                st.header("⚠️ You might be susceptible to misinformation!")
+                st.header("⚠️ You might be susceptible!")
         
             st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
             st.markdown("")
