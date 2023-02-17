@@ -199,7 +199,8 @@ if agree or disagree:
                     st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
                     st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-
+                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Extremely poor', 'Poor', 'Average', 'Good', 'Extremely good'])
+                
                     st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
         if st.session_state.dem_submitted:
