@@ -212,6 +212,9 @@ if agree or disagree:
 
         if st.session_state.dem_submitted or disagree:
             #with st.expander("scores", expanded=True):
+            st.markdown("")
+            st.markdown("")
+            st.markdown("")
             if st.session_state.score > 16:
                 st.balloons()
                 st.header("🎉 Congratulations!")
