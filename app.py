@@ -246,7 +246,6 @@ if agree or disagree:
             data-text="I scored {10*st.session_state.score_print}% on veracity discernment, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! 🧐" 
             data-url="yourmist.streamlit.app"
             data-hashtags="misinformation,fakenews"> Tweet </a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
         
         if st.session_state.dem_submitted:
