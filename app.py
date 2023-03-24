@@ -212,6 +212,7 @@ if agree or disagree:
 
         if st.session_state.dem_submitted or disagree:
             #with st.expander("scores", expanded=True):
+            st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
             components.html(
             f"""
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
@@ -232,7 +233,6 @@ if agree or disagree:
             st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
             st.markdown("")
         
-            st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
             st.session_state.dn = st.session_state.n - st.session_state.d
             st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
         
