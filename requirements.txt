@@ -2,8 +2,8 @@ streamlit==1.17.0
 pymongo[srv]
 datetime
 uuid
-matplotlib
-pandas
+#matplotlib
+#pandas
 numpy
-seaborn
-streamlit-lottie
+#seaborn
+#streamlit-lottie
