@@ -1,10 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_lottie import st_lottie
 from datetime import datetime
 from uuid import uuid4
-import seaborn as sns 
-import pandas as pd, numpy as np
+import numpy as np
 
 
 st.set_page_config(
@@ -12,9 +10,6 @@ st.set_page_config(
     page_icon="🧐",
     #layout="wide"
 )
-
-sns.set(rc={'figure.figsize':(4,5)})
-sns.set_style("whitegrid")
 
 st.markdown(
     """ <style>
