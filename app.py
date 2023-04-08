@@ -191,10 +191,10 @@ if agree or disagree:
                     st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
                     st.text_input('What is your Twitter handle?', key="twitter_handle")
                     st.text_input('What is your age?', key="age")
-                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'])
-                    st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'])
-                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'])
-                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Extremely poor', 'Poor', 'Average', 'Good', 'Extremely good'])
+                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Other'],key="gender")
+                    st.radio('What the highest level of education you completed?', ['', 'High School or Less', 'Some College', 'Higher Degree'], key="education")
+                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
+                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Extremely poor', 'Poor', 'Average', 'Good', 'Extremely good'],ley="perceived_ability")
                 
                     st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
@@ -246,12 +246,22 @@ if agree or disagree:
             #import pymongo
 
             #client = pymongo.MongoClient(st.secrets["mongo"])
-            #db = client.polarization
+            #db = client.mist
             #st.session_state.collection = db.app
            
             user_data = {
                             "id": st.session_state.id, 
-                            "answers": st.session_state.answers, 
+                            "score": st.session_state.score, 
+                            "r": st.session_state.r,
+                            "f": st.session_state.f,
+                            "n": st.session_state.n,
+                            "d": st.session_state.d,
+                            "twitter_handle": st.session_state.twitter_handle,
+                            "age": st.session_state.age,
+                            "gender": st.session_state.gender,
+                            "education": st.session_state.education,
+                            "politics": st.session_state.politics,
+                            "perceived_ability": st.session_state.perceived_ability
                             }
             
             if "inserted" not in st.session_state:
