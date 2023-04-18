@@ -243,9 +243,10 @@ if agree or disagree:
             st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
         
         if st.session_state.dem_submitted:
-            import pymongo
+            from pymongo.mongo_client import MongoClient
+            from pymongo.server_api import ServerApi
 
-            client = pymongo.mongo_client.MongoClient(st.secrets["mongo"])
+            client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1')))
             db = client.mist
             st.session_state.collection = db.app
            
