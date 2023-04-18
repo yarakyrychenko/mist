@@ -246,7 +246,7 @@ if agree or disagree:
             from pymongo.mongo_client import MongoClient
             from pymongo.server_api import ServerApi
 
-            client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1')))
+            client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1'))
             db = client.mist
             st.session_state.collection = db.app
            
