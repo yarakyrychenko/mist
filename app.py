@@ -243,12 +243,12 @@ if agree or disagree:
             st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
         
         if st.session_state.dem_submitted:
-            from pymongo.mongo_client import MongoClient
-            from pymongo.server_api import ServerApi
+            #from pymongo.mongo_client import MongoClient
+            #from pymongo.server_api import ServerApi
 
-            client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1'))
-            db = client.mist
-            st.session_state.collection = db.app
+            #client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1'))
+            #db = client.mist
+            #st.session_state.collection = db.app
            
             user_data = {
                             "id": st.session_state.id, 
@@ -267,4 +267,4 @@ if agree or disagree:
             
             if "inserted" not in st.session_state:
                 st.session_state.inserted = True
-                st.session_state.collection.insert_one(user_data)  
+                #st.session_state.collection.insert_one(user_data)  
