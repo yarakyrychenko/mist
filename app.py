@@ -245,7 +245,7 @@ if agree or disagree:
         if st.session_state.dem_submitted:
             import pymongo
 
-            client = pymongo.MongoClient(st.secrets["mongo"])
+            client = pymongo.mongo_client.MongoClient(st.secrets["mongo"])
             db = client.mist
             st.session_state.collection = db.app
            
