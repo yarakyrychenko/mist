@@ -1,5 +1,5 @@
 streamlit==1.20.0
-pymongo[srv]
+pymongo==3.6
 datetime
 uuid
 numpy
