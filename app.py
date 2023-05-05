@@ -113,7 +113,7 @@ if agree or disagree:
     if True:
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
-             "The Corporate Media Is Controlled by the Military-industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
+             "The Corporate Media Is Controlled by the Military-Industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
              "New Study: Left-Wingers Are More Likely to Lie to Get a Higher Salary",
              "The Government Is Manipulating the Public's Perception of Genetic Engineering in Order to Make People More Accepting of Such Techniques",
              "Left-Wing Extremism Causes 'More Damage' to World Than Terrorism, Says UN Report",
@@ -123,10 +123,10 @@ if agree or disagree:
              "Ebola Virus 'Caused by US Nuclear Weapons Testing', New Study Says",
              "Government Officials Have Illegally Manipulated the Weather to Cause Devastating Storms",
              "Attitudes Toward EU Are Largely Positive, Both Within Europe and Outside It",
-             "One-in-Three Worldwide Lack Confidence in NGOs",
+             "One-in-Three Worldwide Lack Confidence in Non-Governmental Organizations",
              "Reflecting a Demographic Shift, 109 US Counties Have Become Majority Nonwhite Since 2000",
              "International Relations Experts and US Public Agree: America Is Less Respected Globally",
-             "Hyatt Will Remove Small Bottles from Hotel Bathrooms by 2021",
+             "Hyatt Will Remove Small Bottles from Hotel Bathrooms",
              "Morocco’s King Appoints Committee Chief to Fight Poverty and Inequality",
              "Republicans Divided in Views of Trump’s Conduct, Democrats Are Broadly Critical",
              "Democrats More Supportive than Republicans of Federal Spending for Scientific Research",
