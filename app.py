@@ -46,7 +46,7 @@ with placeholder.container():
             
             In this study, you will be asked to rate 20 news headlines as real or fake and answer a few optional questions about your background. It should take 2-3 minutes to complete. All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             
-            This study is led by Professor Sander van der Linden (sv395@cam.ac.uk) and Dr Rakoen Maertens (rm938@cam.ac.uk), Department of Psychology, University of Cambridge.
+            This study is led by Professor Sander van der Linden (sv395@cam.ac.uk), Dr Rakoen Maertens (rm938@cam.ac.uk) and Yara Kyrychenko (yk408@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
  
         st.markdown("")
@@ -63,7 +63,7 @@ with placeholder.container():
         st.radio("**Do you consent to participating in this study and sharing anonymized information?**", ["","Yes, I consent", "No, I do not consent"], key = "consent",label_visibility="visible", horizontal=True)
         agree = st.session_state.consent == "Yes, I consent" 
         disagree = st.session_state.consent == "No, I do not consent" 
-        
+      
         
 
 if agree:
@@ -75,7 +75,7 @@ if agree:
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             
-            This study is led by Professor Sander van der Linden (sv395@cam.ac.uk) and Dr Rakoen Maertens (rm938@cam.ac.uk), Department of Psychology, University of Cambridge.
+            This study is led by Professor Sander van der Linden (sv395@cam.ac.uk), Dr Rakoen Maertens (rm938@cam.ac.uk) and Yara Kyrychenko (yk408@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
         st.markdown("**You consented.**")
         st.markdown("")
@@ -97,7 +97,9 @@ if disagree:
         st.markdown("""
             Please consider participating in our research study about misinformation susceptibility online.
             
-            All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
+            In this study, you will be asked to rate 20 news headlines as real or fake and answer a few optional questions about your background. It should take 2-3 minutes to complete. All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
+            
+            This study is led by Professor Sander van der Linden (sv395@cam.ac.uk), Dr Rakoen Maertens (rm938@cam.ac.uk) and Yara Kyrychenko (yk408@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
         st.markdown("**You did not consent.**")
         st.markdown("")
