@@ -68,7 +68,8 @@ with placeholder.container():
 
 if agree:
     placeholder.empty()
-    st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
+    if "id" not in st.session_state:
+        st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
