@@ -68,6 +68,7 @@ with placeholder.container():
 
 if agree:
     placeholder.empty()
+    st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
     with st.expander("Consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
@@ -211,7 +212,6 @@ if agree or disagree:
         if st.session_state.dem_submitted:
             demplaceholder.empty()
             with st.expander("Optional Questions", expanded=True):
-                st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
                 st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.") 
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
