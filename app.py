@@ -276,14 +276,15 @@ if agree or disagree:
   
 
         if st.session_state.dem_submitted:
-            #from pymongo.mongo_client import MongoClient
-            #from pymongo.server_api import ServerApi
+            if "inserted" not in st.session_state:
+                #from pymongo.mongo_client import MongoClient
+                #from pymongo.server_api import ServerApi
 
-            #client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1'))
-            #db = client.mist
-            #st.session_state.collection = db.app
+                #client = MongoClient(st.secrets["mongo"],server_api=ServerApi('1'))
+                #db = client.mist
+                #st.session_state.collection = db.app
            
-            user_data = {
+                user_data = {
                             "id": st.session_state.id, 
                             "score": st.session_state.score, 
                             "r": st.session_state.r,
@@ -298,7 +299,6 @@ if agree or disagree:
                             "continent": st.session_state.continent,
                             "perceived_ability": st.session_state.perceived_ability
                             }
-            
-            if "inserted" not in st.session_state:
+                
                 st.session_state.inserted = True
                 #st.session_state.collection.insert_one(user_data)  
