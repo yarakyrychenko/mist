@@ -224,6 +224,7 @@ if agree or disagree:
             data-hashtags="misinformation,fakenews"> 
             Tweet
             </a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
             
             if st.session_state.score > 16:
