@@ -206,7 +206,7 @@ if agree or disagree:
                     st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
                     st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
                     st.radio('Which continent do you live on?', ['', 'Africa', 'Antarctica', 'Asia', 'Australia/Oceania', 'Europe', 'North America', 'South America'],key="continent")
-                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Extremely poor', 'Poor', 'Average', 'Good', 'Extremely good'],key="perceived_ability")
+                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
                 
                     st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
 
