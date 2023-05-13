@@ -238,7 +238,7 @@ if agree or disagree:
             st.session_state.how = st.session_state.how if st.session_state.dn != 0 else "are **"
             if st.session_state.score > 16:
                 st.balloons()
-                with st.expander(":large_green_circle:", expanded=True):
+                with st.expander("", expanded=True):
                     st.header("🎉 Congratulations!")
                     st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
                     st.markdown("")
@@ -250,7 +250,7 @@ if agree or disagree:
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
         
             elif 13 < st.session_state.score <= 16:
-                with st.expander(":large_yellow_circle:", expanded=True):
+                with st.expander("", expanded=True):
                     st.header("👍 Good try!")
                     st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
                     st.markdown("")
@@ -262,7 +262,7 @@ if agree or disagree:
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
        
             else:
-                with st.expander(":red_circle:", expanded=True):
+                with st.expander("", expanded=True):
                     st.header("⚠️ You might be susceptible!")
                     st.subheader(f"You're less resilient to misinformation than **{100 - st.session_state.ustable[st.session_state.score]}%** of the US population!") 
                     st.markdown("")
