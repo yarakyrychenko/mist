@@ -49,7 +49,7 @@ In order to comply with open sciences standards administered by academic journal
 
 ### Deleting Data
 
-If you wish to delete your data, we generate a unique, anonymous, randomly generated ID, and you can use it to request deletion of your data. Your user ID is shown after you fill out the consent form and in the “about” section of the app. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data.
+If you wish to delete your data, we generate a unique, anonymous, randomly generated ID, and you can use it to request deletion of your data by emailing Yara Kyrychenko (yk408@cam.ac.uk) with the ID within one year of study completion. Your user ID is shown after you fill out the consent form. Alternatively, if you lose this ID, you can tell us the Twitter handle that you entered and we can delete the data.
 
 ### Your rights
 
@@ -71,7 +71,5 @@ Yara Kyrychenko (yk408@cam.ac.uk).
 
 Department of Psychology, University of Cambridge
 Downing Street Cambridge, CB2 3EB
-
-The Data Protection Officer of the University can be contacted at dpo@admin.cam.ac.uk
 
  
