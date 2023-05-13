@@ -230,31 +230,51 @@ if agree or disagree:
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             """)
             
-            if st.session_state.score > 16:
-                st.balloons()
-                st.header("🎉 Congratulations!")
-            elif 13 < st.session_state.score <= 16:
-                st.header("👍 Good try!")
-            else:
-                st.header("⚠️ You might be susceptible!")
-        
-            st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population and **{st.session_state.uktable[st.session_state.score]}%** of the UK!")
-            st.markdown("")
-        
             st.session_state.dn = st.session_state.n - st.session_state.d
             st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
-        
-            st.header("📈 Your MIST results")
-            st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-            st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-            st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
-            st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
             st.session_state.good = "is **great**!" if st.session_state.score > 16 else "is **good**!" if st.session_state.score > 13 else "**needs some work**..."
             st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither too skeptical nor too gullible"
             st.session_state.how = "might be **a bit " if np.linalg.norm(st.session_state.dn) < 4 else "might be **very " if np.linalg.norm(st.session_state.dn) < 8 else "might be **overly "
             st.session_state.how = st.session_state.how if st.session_state.dn != 0 else "are **"
-            st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+            if st.session_state.score > 16:
+                st.balloons()
+                with st.success():
+                    st.header("🎉 Congratulations!")
+                    st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
+                    st.markdown("")
+                    st.header("📈 Your MIST results")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
+                    st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
         
+            elif 13 < st.session_state.score <= 16:
+                with st.warning():
+                    st.header("👍 Good try!")
+                    st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
+                    st.markdown("")
+                    st.header("📈 Your MIST results")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
+                    st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+       
+            else:
+                with st.error():
+                    st.header("⚠️ You might be susceptible!")
+                    st.subheader(f"You're less resilient to misinformation than **{100 - st.session_state.ustable[st.session_state.score]}%** of the US population!") 
+                    st.markdown("")
+                    st.header("📈 Your MIST results")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
+                    st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+        
+  
+
         if st.session_state.dem_submitted:
             #from pymongo.mongo_client import MongoClient
             #from pymongo.server_api import ServerApi
