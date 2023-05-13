@@ -217,11 +217,13 @@ if agree or disagree:
             st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
             components.html(
             f"""
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"
+            data-size="large"
             data-text="I scored {10*st.session_state.score_print}% on veracity discernment, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! 🧐" 
             data-url="yourmist.streamlit.app"
-            data-hashtags="misinformation,fakenews"> Tweet </a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            data-hashtags="misinformation,fakenews"> 
+            Tweet
+            </a>
             """)
             
             if st.session_state.score > 16:
