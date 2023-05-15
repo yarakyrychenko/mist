@@ -264,10 +264,7 @@ if agree or disagree:
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
             
             components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet"
-            data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐" 
-            data-url="yourmist.streamlit.app"
-            data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """)
   
