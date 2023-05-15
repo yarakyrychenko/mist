@@ -238,16 +238,6 @@ if agree or disagree:
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
-                    components.html(
-            f"""
-            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"
-            data-size="large"
-            data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐" 
-            data-url="yourmist.streamlit.app"
-            data-hashtags="misinformation,fakenews"> 
-            🐦 Tweet YourMIST results!
-            </a>
-            """)
         
             elif 13 < st.session_state.score <= 16:
                 with st.expander("", expanded=True):
@@ -260,16 +250,7 @@ if agree or disagree:
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
-                    components.html(
-            f"""
-            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"
-            data-size="large"
-            data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐" 
-            data-url="yourmist.streamlit.app"
-            data-hashtags="misinformation,fakenews"> 
-            🐦 Tweet YourMIST results!
-            </a>
-            """)
+            
             else:
                 with st.expander("", expanded=True):
                     st.header("⚠️ You might be susceptible!")
@@ -281,15 +262,13 @@ if agree or disagree:
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
-                    components.html(
-            f"""
-            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"
-            data-size="large"
+            
+            components.html(
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet"
             data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐" 
             data-url="yourmist.streamlit.app"
             data-hashtags="misinformation,fakenews"> 
-            🐦 Tweet YourMIST results!
-            </a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """)
   
 
