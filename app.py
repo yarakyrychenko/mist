@@ -231,7 +231,6 @@ if agree or disagree:
                 with st.expander("", expanded=True):
                     st.header("🎉 Congratulations!")
                     st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
-                    st.markdown("")
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -243,7 +242,6 @@ if agree or disagree:
                 with st.expander("", expanded=True):
                     st.header("👍 Good try!")
                     st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
-                    st.markdown("")
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -255,7 +253,6 @@ if agree or disagree:
                 with st.expander("", expanded=True):
                     st.header("⚠️ You might be susceptible!")
                     st.subheader(f"You're less resilient to misinformation than **{100 - st.session_state.ustable[st.session_state.score]}%** of the US population!") 
-                    st.markdown("")
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
