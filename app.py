@@ -266,7 +266,7 @@ if agree or disagree:
             components.html(
             f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
-            """, width=200, height=100)
+            """, width=200, height=20)
   
 
         if st.session_state.dem_submitted:
