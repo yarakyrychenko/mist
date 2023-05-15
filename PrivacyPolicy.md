@@ -61,7 +61,7 @@ Our Site may, from time to time, contain links to and from the websites of Our p
 
 Any changes We may make to Our privacy policy in the future will be posted on this page and, where appropriate, notified to you on the Web Site itself. Please check back frequently to see any updates or changes to Our privacy policy.
 
-This Privacy Policy was Updated Feb 11, 2023.
+This Privacy Policy was Updated May 13, 2023.
 
 ### Contact
 
