@@ -244,9 +244,9 @@ if agree or disagree:
             if st.session_state.score > 16:
                 st.balloons()
                 with st.expander("", expanded=True):
-                    st.header("🎉 Congratulations!")
+                    st.subheader("🎉 Congratulations!")
                     st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population!**") 
-                    st.header(f"📈 Your MIST results: {st.session_state.score}/20")
+                    st.subheader(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
@@ -259,9 +259,9 @@ if agree or disagree:
                     
             elif 13 < st.session_state.score <= 16:
                 with st.expander("", expanded=True):
-                    st.header("👍 Good try!")
+                    st.subheader("👍 Good try!")
                     st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population!**")  
-                    st.header(f"📈 Your MIST results: {st.session_state.score}/20")
+                    st.subheader(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
