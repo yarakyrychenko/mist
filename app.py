@@ -230,7 +230,7 @@ if agree or disagree:
                 st.balloons()
                 with st.expander("", expanded=True):
                     st.header("🎉 Congratulations!")
-                    st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
+                    st.markdown(f"**You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!**") 
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -241,7 +241,7 @@ if agree or disagree:
             elif 13 < st.session_state.score <= 16:
                 with st.expander("", expanded=True):
                     st.header("👍 Good try!")
-                    st.subheader(f"You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!") 
+                    st.markdown(f"**You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!**") 
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -252,7 +252,7 @@ if agree or disagree:
             else:
                 with st.expander("", expanded=True):
                     st.header("⚠️ You might be susceptible!")
-                    st.subheader(f"You're less resilient to misinformation than **{100 - st.session_state.ustable[st.session_state.score]}%** of the US population!") 
+                    st.markdown(f"**You're less resilient to misinformation than **{100 - st.session_state.ustable[st.session_state.score]}%** of the US population!**") 
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -261,9 +261,9 @@ if agree or disagree:
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
             
             components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews" data-size="large"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
-            """, width=100, height=40)
+            """, width=100, height=30)
   
 
         if st.session_state.dem_submitted:
