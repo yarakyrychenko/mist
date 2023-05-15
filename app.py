@@ -199,7 +199,9 @@ if agree or disagree:
         if agree and not st.session_state.dem_submitted:
             with demplaceholder.container():
                 countries = ["Select Country","Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Austria","Azerbaijan","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Channel Islands","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Côte d'Ivoire",
-                             "DR Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Faeroe Islands","Finland","France","French Guiana","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Holy See","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mayotte","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Panama","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Réunion","Saint Helena","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","State of Palestine","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","The Bahamas","Timor-Leste","Togo","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"]
+                             "DR Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Faeroe Islands","Finland","France","French Guiana","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Holy See","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan",
+                             "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mayotte","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Panama","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Réunion","Saint Helena","Saint Kitts and Nevis",
+                             "Saint Lucia","Saint Vincent and the Grenadines","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","State of Palestine","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","The Bahamas","Timor-Leste","Togo","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"]
                 with st.expander("Optional Questions", expanded=True):
                     st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
                     st.text_input('What is your Twitter handle?', key="twitter_handle")
@@ -218,7 +220,18 @@ if agree or disagree:
                 st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.") 
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
+
         if st.session_state.dem_submitted or disagree:
+            if "country" not in st.session_state:
+                st.session_state.UKorUS = "US" 
+                st.session_state.table =  st.session_state.ustable
+            elif st.session_state.country == "United Kingdom":
+                st.session_state.UKorUS = "UK" 
+                st.session_state.table =  st.session_state.uktable
+            else:
+                st.session_state.UKorUS = "US" 
+                st.session_state.table =  st.session_state.ustable
+                
             #with st.expander("scores", expanded=True):
             st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
             
@@ -232,7 +245,7 @@ if agree or disagree:
                 st.balloons()
                 with st.expander("", expanded=True):
                     st.header("🎉 Congratulations!")
-                    st.markdown(f"**You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!**") 
+                    st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population!**") 
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -240,14 +253,14 @@ if agree or disagree:
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """, width=100, height=30)
                     
             elif 13 < st.session_state.score <= 16:
                 with st.expander("", expanded=True):
                     st.header("👍 Good try!")
-                    st.markdown(f"**You're more resilient to misinformation than **{st.session_state.ustable[st.session_state.score]}%** of the US population!**") 
+                    st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population!**")  
                     st.header(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -255,14 +268,14 @@ if agree or disagree:
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """, width=100, height=30)
                     
             else:
                 with st.expander("", expanded=True):
                     st.subheader("⚠️ You might be susceptible!")
-                    st.markdown(f"**You're less resilient to misinformation than {100 - st.session_state.ustable[st.session_state.score]}% of the US population!**") 
+                    st.markdown(f"**You're less resilient to misinformation than {100 - st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population!**") 
                     st.subheader(f"📈 Your MIST results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
@@ -270,7 +283,7 @@ if agree or disagree:
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.ustable[st.session_state.score]}% of the US population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.table[st.session_state.score]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """, width=100, height=30)
           
