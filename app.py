@@ -5,7 +5,7 @@ from uuid import uuid4
 import numpy as np
 from PIL import Image
 
-image = Image.open('https://streamlit.io/images/brand/streamlit-mark-light.png')
+image = Image.open('logo.jpg')
 st.image(image, caption='')
 
 st.set_page_config(
