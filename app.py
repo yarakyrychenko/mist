@@ -31,7 +31,7 @@ div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
 def format(option):
     return "Real" if option == "Real" else "Fake"
 
-image = Image.open('logo.svg')
+image = Image.open('logo.jpg')
 st.image(image,caption=None,width=300,output_format="PNG")
 
 st.header("🧐 MIST Misinformation Susceptibility Test")
