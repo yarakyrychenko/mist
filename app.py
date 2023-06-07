@@ -5,9 +5,6 @@ from uuid import uuid4
 import numpy as np
 from PIL import Image
 
-image = Image.open('logo.jpg')
-st.image(image, caption='')
-
 st.set_page_config(
     page_title="MIST Misinformation Susceptibility Test",
     page_icon="🧐"
@@ -34,6 +31,8 @@ div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
 def format(option):
     return "Real" if option == "Real" else "Fake"
 
+image = Image.open('logo.jpg')
+st.image(image, caption='', width=50)
 
 st.header("🧐 MIST Misinformation Susceptibility Test")
 st.subheader("Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.")
