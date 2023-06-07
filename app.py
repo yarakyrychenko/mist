@@ -3,12 +3,14 @@ import streamlit.components.v1 as components
 from datetime import datetime
 from uuid import uuid4
 import numpy as np
+from PIL import Image
 
+image = Image.open('logo.jpg')
+st.image(image)
 
 st.set_page_config(
     page_title="MIST Misinformation Susceptibility Test",
-    page_icon="🧐",
-    #layout="wide"
+    page_icon="🧐"
 )
 
 st.markdown(
