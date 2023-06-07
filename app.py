@@ -32,7 +32,7 @@ def format(option):
     return "Real" if option == "Real" else "Fake"
 
 image = Image.open('logo.jpg')
-st.image(image, caption=None,width=500)
+st.image(image, caption=None,width=300,output_format="JPEG")
 
 st.header("🧐 MIST Misinformation Susceptibility Test")
 st.subheader("Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.")
