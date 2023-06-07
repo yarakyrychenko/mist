@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 
 image = Image.open('logo.jpg')
-st.image(image)
+st.image(image, caption='')
 
 st.set_page_config(
     page_title="MIST Misinformation Susceptibility Test",
