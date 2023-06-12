@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 
 st.set_page_config(
-    page_title="MIST Misinformation Susceptibility Test",
+    page_title="Misinformation Susceptibility Test (MIST)",
     page_icon="🧐"
 )
 
@@ -40,11 +40,11 @@ with col2:
 
 
 
-st.header("Misinformation Susceptibility Test")
+st.subheader("Misinformation Susceptibility Test")
 st.markdown("**Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.**")
 st.markdown("*It only takes 2 minutes!*")
 st.markdown("")
-st.markdown("*Prof Sander van der Linden, Department of Psychology, sv395@cam.ac.uk*")
+st.markdown("*Professor Sander van der Linden, University of Cambridge, Department of Psychology, sv395@cam.ac.uk*")
 
 placeholder = st.empty()
 with placeholder.container():
