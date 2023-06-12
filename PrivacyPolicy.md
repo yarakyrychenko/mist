@@ -1,5 +1,5 @@
-![](logo.png)
-Sander van der Linden, Department of Psychology 
+![](logo.jpg)
+*Professor Sander van der Linden, University of Cambridge, Department of Psychology, sv395@cam.ac.uk*
 
 ## Privacy Policy
 
