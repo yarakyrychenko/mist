@@ -165,42 +165,17 @@ if agree or disagree:
             
         with st.expander("**Start the test!** 🧐",expanded=False):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
-            st.radio(st.session_state.mist_items[st.session_state.items_order[0]], st.session_state.order, key = "q1", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[1]], st.session_state.order, key = "q2", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[2]], st.session_state.order, key = "q3", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[3]], st.session_state.order, key = "q4", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[4]], st.session_state.order, key = "q5", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[5]], st.session_state.order, key = "q6", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[6]], st.session_state.order, key = "q7", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[7]], st.session_state.order, key = "q8", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[8]], st.session_state.order, key = "q9", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[9]], st.session_state.order, key = "q10", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[10]], st.session_state.order, key = "q11", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[11]], st.session_state.order, key = "q12", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[12]], st.session_state.order, key = "q13", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[13]], st.session_state.order, key = "q14", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[14]], st.session_state.order, key = "q15", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[15]], st.session_state.order, key = "q16", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[16]], st.session_state.order, key = "q17", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[17]], st.session_state.order, key = "q18", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[18]], st.session_state.order, key = "q19", format_func=format, label_visibility="visible", horizontal=True)
-            st.radio(st.session_state.mist_items[st.session_state.items_order[19]], st.session_state.order, key = "q20", format_func=format, label_visibility="visible", horizontal=True)
             
-            if st.button("Submit", key="sub"):
-                vars = ["q"+str(j) for j in range(1,21)]
-                st.session_state.answers = [st.session_state[var] for var in vars]
-                st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-                if st.session_state.disable:
-                    st.session_state.submitted = False
-                    st.markdown("Please check that you answered every question!")
-                else:
-                    st.session_state.submitted = True
-                    st.session_state.disable = True
-            #if not st.session_state.submitted:
-           #     st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
-           # else:
-            #    st.button("Submit", disabled=st.session_state.disable, key="sub")
-           #     st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
+             j=0
+             for i in st.session_state.items_order:
+                 j+=1
+                 st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+                    
+            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False		             
+            if not st.session_state.submitted:
+                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
+            else:
+                st.button("Submit", disabled=st.session_state.disable, key="sub")
          
     if st.session_state.submitted:
         
