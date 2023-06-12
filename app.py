@@ -168,7 +168,7 @@ if agree or disagree:
             j=0
             for i in st.session_state.items_order:
                 j+=1
-                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+                st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j), format_func=format, label_visibility="visible", horizontal=True)
                      
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
             if not st.session_state.submitted:
@@ -177,6 +177,8 @@ if agree or disagree:
                 st.button("Submit", disabled=st.session_state.disable, key="sub")
          
     if st.session_state.submitted:
+        vars = ["q"+str(j) for j in range(1,21)]
+        st.session_state.answers = [st.session_state[var] for var in vars]
         st.session_state.graded = []
         st.session_state.r = 0
         st.session_state.f = 0
