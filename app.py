@@ -163,7 +163,7 @@ if agree or disagree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander("Click here to start the test!",expanded=False):
+        with st.expander("**Click here to start the test!** 🧐",expanded=False):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             j=0
             for i in st.session_state.items_order:
