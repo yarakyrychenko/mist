@@ -42,7 +42,7 @@ with col2:
 
 st.subheader("Misinformation Susceptibility Test")
 st.markdown("**Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.**")
-st.markdown("*It only takes 2 minutes!*")
+st.markdown("It only takes 2 minutes!")
 st.markdown("")
 st.markdown("*Professor Sander van der Linden, University of Cambridge, Department of Psychology, sv395@cam.ac.uk*")
 
