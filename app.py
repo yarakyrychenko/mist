@@ -169,12 +169,20 @@ if agree or disagree:
             for i in st.session_state.items_order:
                 j+=1
                 st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j), format_func=format, label_visibility="visible", horizontal=True)
-                     
-            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
-            if not st.session_state.submitted:
-                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
-            else:
-                st.button("Submit", disabled=st.session_state.disable, key="sub")
+            
+            if st.button("Submit", key="sub"):
+                st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
+                if st.session_state.disable:
+                    st.session_state.submitted = False
+                    st.markdown("Please check that you answered every question!")
+                else:
+                    st.session_state.submitted = True
+                    st.session_state.disable = True
+            #if not st.session_state.submitted:
+           #     st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
+           # else:
+            #    st.button("Submit", disabled=st.session_state.disable, key="sub")
+           #     st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
          
     if st.session_state.submitted:
         vars = ["q"+str(j) for j in range(1,21)]
