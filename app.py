@@ -31,19 +31,20 @@ div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
 def format(option):
     return "Real" if option == "Real" else "Fake"
 
-col1, col2 = st.columns([1,3])
+col1, col2 = st.columns([1,2])
 with col1:
     image = Image.open('logo.jpg')
     st.image(image,caption=None,output_format="JPEG")
-    st.markdown("Prof Sander van der Linden, Department of Psychology, sv395@cam.ac.uk")
 with col2:
     pass
 
 
 
-st.header("🧐 MIST Misinformation Susceptibility Test")
-st.subheader("Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.")
+st.header("Misinformation Susceptibility Test")
+st.markdown("**Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.**")
 st.markdown("*It only takes 2 minutes!*")
+st.markdown("")
+st.markdown("*Prof Sander van der Linden, Department of Psychology, sv395@cam.ac.uk*")
 
 placeholder = st.empty()
 with placeholder.container():
