@@ -166,10 +166,10 @@ if agree or disagree:
         with st.expander("**Start the test!** 🧐",expanded=False):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             
-             j=0
-             for i in st.session_state.items_order:
-                 j+=1
-                 st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+            j=0
+            for i in st.session_state.items_order:
+                j+=1
+                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
                     
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False		             
             if not st.session_state.submitted:
