@@ -31,13 +31,15 @@ div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
 def format(option):
     return "Real" if option == "Real" else "Fake"
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 with col1:
     image = Image.open('logo.jpg')
     st.image(image,caption=None,output_format="JPEG")
 with col2:
     pass
 with col3:
+    pass
+with col4:
     pass
 
 
