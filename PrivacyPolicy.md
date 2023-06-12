@@ -1,3 +1,6 @@
+![](logo.png)
+Sander van der Linden, Department of Psychology 
+
 ## Privacy Policy
 
 “MIST” app and the University of Cambridge (We, Us or Our) are committed to protecting and respecting your privacy in accordance with the applicable data protection legislation.
