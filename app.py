@@ -79,7 +79,7 @@ if agree:
     placeholder.empty()
     if "id" not in st.session_state:
         st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
-    with st.expander("You consented", expanded=False):
+    with st.expander("Privacy and study information", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
             Please consider participating in our research study about misinformation susceptibility online.
@@ -103,7 +103,7 @@ if agree:
 if disagree:
     st.session_state.dem_submitted = False
     placeholder.empty()
-    with st.expander("You did not consent", expanded=False):
+    with st.expander("Privacy and study information", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
             Please consider participating in our research study about misinformation susceptibility online.
