@@ -79,7 +79,7 @@ if agree:
     placeholder.empty()
     if "id" not in st.session_state:
         st.session_state.id = datetime.now().strftime('%Y%m-%d%H-%M-') + str(uuid4())
-    with st.expander("Consent", expanded=False):
+    with st.expander("You consented", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
             Please consider participating in our research study about misinformation susceptibility online.
@@ -103,7 +103,7 @@ if agree:
 if disagree:
     st.session_state.dem_submitted = False
     placeholder.empty()
-    with st.expander("Consent", expanded=False):
+    with st.expander("You did not consent", expanded=False):
         st.markdown("##### Take Part in Our Study")
         st.markdown("""
             Please consider participating in our research study about misinformation susceptibility online.
@@ -163,7 +163,7 @@ if agree or disagree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander("Test",expanded=True):
+        with st.expander("Click here to start the test!",expanded=False):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             j=0
             for i in st.session_state.items_order:
