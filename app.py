@@ -316,7 +316,7 @@ if agree or disagree:
                             "f": st.session_state.f,
                             "n": st.session_state.n,
                             "d": st.session_state.d,
-                            "twitter_handle": st.session_state.twitter_handle_hash,
+                            "twitter_handle": st.session_state.twitter_handle_hash.decode(),
                             "age": st.session_state.age,
                             "gender": st.session_state.gender,
                             "education": st.session_state.education,
