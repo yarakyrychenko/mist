@@ -153,6 +153,8 @@ if agree or disagree:
              "Global Warming Age Gap: Younger Americans Most Worried",
              "US Support for Legal Marijuana Steady in Past Year"
             ]
+        st.session_state.mist_item_labels = ["f1","f2","f3","f4","f5","f6","f7","f8","f9","f10",
+                                                "t1","t2","t3","t4","t5","t6","t7","t8","t9","t10"] 
         st.session_state.labels = ["Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake",
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
             
@@ -317,6 +319,9 @@ if agree or disagree:
                             "country": st.session_state.country,
                             "perceived_ability": st.session_state.perceived_ability
                             }
+                item_data = {st.session_state.mist_item_labels[st.session_state.items_order[i]]: st.session_state.answers[i] for i in range(20)}
+                user_data.update(item_data)
+                
                 from pymongo.mongo_client import MongoClient
                 from pymongo.server_api import ServerApi
                 with MongoClient(st.secrets["mongo"],server_api=ServerApi('1')) as client:
