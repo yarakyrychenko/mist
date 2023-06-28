@@ -305,9 +305,9 @@ if agree or disagree:
         if st.session_state.dem_submitted:
             if "inserted" not in st.session_state:
                 if st.session_state.twitter_handle != "":
-                    import rsa
-                    pkey = rsa.PublicKey(st.secrets["pkey1"], st.secrets["pkey2"])
-                    st.session_state.twitter_handle_hash = rsa.encrypt(st.session_state.twitter_handle.encode(),pkey)
+                    from cryptography.fernet import Fernet
+                    fernet = Fernet(st.secrets["key"].encode())
+                    st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode())
                     
                 user_data = {
                             "id": st.session_state.id, 
