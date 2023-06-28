@@ -45,8 +45,7 @@ st.markdown("**Think you can beat misinformation? Try this comprehensive test of
 st.markdown("It only takes 2 minutes!")
 st.markdown("")
 st.markdown("*Dr Rakoen Maertens, University of Cambridge, Department of Psychology, rm938@cam.ac.uk*")
-st.markdown("*Professor Sander van der Linden, University of Cambridge, Department of Psychology, sv395@cam.ac.uk*")
-
+st.markdown('<p style="font-size: 10px;">Maertens, R.*, Götz, F. M.*, Golino, H. F., Roozenbeek, J., Schneider, C. R., Kyrychenko, Y., Kerr, J. R., Stieger, S., McClanahan, W. P., Drabot, K., He, J., & van der Linden, S. (2023). The Misinformation Susceptibility Test (MIST): A psychometrically validated measure of news veracity discernment. Behavior Research Methods. Advance online publication. https://doi.org/10.3758/s13428-023-02124-2</p>', unsafe_allow_html=True)
 placeholder = st.empty()
 with placeholder.container():
     with st.expander("Consent", expanded=True):
@@ -56,7 +55,7 @@ with placeholder.container():
             
             In this study, you will be asked to rate 20 news headlines as real or fake and answer a few optional questions about your background. It should take 2-3 minutes to complete. All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             
-            This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Professor Sander van der Linden (sv395@cam.ac.uk) and Yara Kyrychenko (yk408@cam.ac.uk), Department of Psychology, University of Cambridge.
+            This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Yara Kyrychenko (yk408@cam.ac.uk) and Professor Sander van der Linden (sv395@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
  
         st.markdown("")
@@ -87,7 +86,7 @@ if agree:
             
             All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             
-            This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Professor Sander van der Linden (sv395@cam.ac.uk) and Yara Kyrychenko (yk408@cam.ac.uk), Department of Psychology, University of Cambridge.
+            This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Yara Kyrychenko (yk408@cam.ac.uk) and Professor Sander van der Linden (sv395@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
         st.markdown("**You consented.**")
         st.markdown("")
@@ -111,7 +110,7 @@ if disagree:
             
             In this study, you will be asked to rate 20 news headlines as real or fake and answer a few optional questions about your background. It should take 2-3 minutes to complete. All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
             
-            This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Professor Sander van der Linden (sv395@cam.ac.uk) and Yara Kyrychenko (yk408@cam.ac.uk), Department of Psychology, University of Cambridge.
+            This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Yara Kyrychenko (yk408@cam.ac.uk) and Professor Sander van der Linden (sv395@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
         st.markdown("**You did not consent.**")
         st.markdown("")
