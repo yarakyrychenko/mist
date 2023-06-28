@@ -45,7 +45,7 @@ st.markdown("**Think you can beat misinformation? Try this comprehensive test of
 st.markdown("It only takes 2 minutes!")
 st.markdown("")
 st.markdown("*Dr Rakoen Maertens, University of Cambridge, Department of Psychology, rm938@cam.ac.uk*")
-st.markdown('<p style="font-size: 10px;">Maertens, R.*, Götz, F. M.*, Golino, H. F., Roozenbeek, J., Schneider, C. R., Kyrychenko, Y., Kerr, J. R., Stieger, S., McClanahan, W. P., Drabot, K., He, J., & van der Linden, S. (2023). The Misinformation Susceptibility Test (MIST): A psychometrically validated measure of news veracity discernment. Behavior Research Methods. Advance online publication. [https://doi.org/10.3758/s13428-023-02124-2](https://doi.org/10.3758/s13428-023-02124-2)</p>', unsafe_allow_html=True)
+st.markdown('<p style="font-size: 10px;">Maertens, R.*, Götz, F. M.*, Golino, H. F., Roozenbeek, J., Schneider, C. R., Kyrychenko, Y., Kerr, J. R., Stieger, S., McClanahan, W. P., Drabot, K., He, J., & van der Linden, S. (2023). The Misinformation Susceptibility Test (MIST): A psychometrically validated measure of news veracity discernment. <i>Behavior Research Methods.</i> Advance online publication. <a href="https://doi.org/10.3758/s13428-023-02124-2">https://doi.org/10.3758/s13428-023-02124-2</a></p>', unsafe_allow_html=True)
 placeholder = st.empty()
 with placeholder.container():
     with st.expander("Consent", expanded=True):
