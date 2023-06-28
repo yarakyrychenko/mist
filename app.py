@@ -307,7 +307,9 @@ if agree or disagree:
                 if st.session_state.twitter_handle != "":
                     from cryptography.fernet import Fernet
                     fernet = Fernet(st.secrets["key"].encode())
-                    st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode())
+                    st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode()).decode()
+                else:
+                    st.session_state.twitter_handle_hash = ""
                     
                 user_data = {
                             "id": st.session_state.id, 
@@ -316,7 +318,7 @@ if agree or disagree:
                             "f": st.session_state.f,
                             "n": st.session_state.n,
                             "d": st.session_state.d,
-                            "twitter_handle": st.session_state.twitter_handle_hash.decode(),
+                            "twitter_handle": st.session_state.twitter_handle_hash,
                             "age": st.session_state.age,
                             "gender": st.session_state.gender,
                             "education": st.session_state.education,
