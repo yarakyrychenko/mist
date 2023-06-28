@@ -53,7 +53,7 @@ with placeholder.container():
         st.markdown("""
             Please consider participating in our research study about misinformation susceptibility online.
             
-            In this study, you will be asked to rate 20 news headlines as real or fake and answer a few optional questions about your background. It should take 2-3 minutes to complete. All data will be kept completely anonymous as per the privacy policy below. You must be 18 years or older to participate. You can use the app without sharing your data by clicking 'No, I do not consent'.
+            In this study, you will be asked to rate 20 news headlines as real or fake and answer a few optional questions about your background. It should take 2-3 minutes to complete. All data will be kept completely anonymous as per the privacy policy below. **You must be 18 years or older to participate.** You can use the app without sharing your data by clicking 'No, I do not consent'.
             
             This study is led by Dr Rakoen Maertens (rm938@cam.ac.uk), Yara Kyrychenko (yk408@cam.ac.uk) and Professor Sander van der Linden (sv395@cam.ac.uk), Department of Psychology, University of Cambridge.
             """)
@@ -229,7 +229,7 @@ if agree or disagree:
 
         if st.session_state.dem_submitted:
             demplaceholder.empty()
-            with st.expander("Optional Questions", expanded=True):
+            with st.expander("Your app ID", expanded=True):
                 st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.") 
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
