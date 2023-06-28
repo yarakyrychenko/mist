@@ -304,6 +304,11 @@ if agree or disagree:
 
         if st.session_state.dem_submitted:
             if "inserted" not in st.session_state:
+                if st.session_state.twitter_handle != "":
+                    import rsa
+                    pkey = rsa.PublicKey(st.secrets["pkey1"], st.secrets["pkey2"])
+                    st.session_state.twitter_handle_hash = rsa.encrypt(st.session_state.twitter_handle.encode(),pkey)
+                    
                 user_data = {
                             "id": st.session_state.id, 
                             "score": st.session_state.score, 
@@ -311,7 +316,7 @@ if agree or disagree:
                             "f": st.session_state.f,
                             "n": st.session_state.n,
                             "d": st.session_state.d,
-                            "twitter_handle": st.session_state.twitter_handle,
+                            "twitter_handle": st.session_state.twitter_handle_hash,
                             "age": st.session_state.age,
                             "gender": st.session_state.gender,
                             "education": st.session_state.education,
