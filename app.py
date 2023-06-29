@@ -178,7 +178,7 @@ if agree or disagree:
             if not st.session_state.submitted:
                 st.session_state.submitted = st.form_submit_button("Submit")#st.button("Submit", disabled=st.session_state.disable, key="sub")
             else:
-                st.session_state.submitted = st.form_submit_button("Submit") #st.button("Submit", disabled=st.session_state.disable, key="sub")
+                st.form_submit_button("Submit") #st.button("Submit", disabled=st.session_state.disable, key="sub")
          
     if st.session_state.submitted and not st.session_state.disable:
         
