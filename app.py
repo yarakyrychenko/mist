@@ -166,7 +166,7 @@ if agree or disagree:
             np.random.shuffle(st.session_state.items_order)
         st.session_state.answers = []
             
-        with st.expander("**Start the test!** 🧐",expanded=False):
+        with st.form("my_form"): #st.expander("**Start the test!** 🧐",expanded=False):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             
             j=0
@@ -176,9 +176,9 @@ if agree or disagree:
                     
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False		             
             if not st.session_state.submitted:
-                st.session_state.submitted = st.button("Submit", disabled=st.session_state.disable, key="sub")
+                st.session_state.submitted = st.form_submit_button("Submit",disabled=st.session_state.disable) #st.button("Submit", disabled=st.session_state.disable, key="sub")
             else:
-                st.button("Submit", disabled=st.session_state.disable, key="sub")
+                st.form_submit_button("Submit",disabled=st.session_state.disable) #st.button("Submit", disabled=st.session_state.disable, key="sub")
          
     if st.session_state.submitted:
         
