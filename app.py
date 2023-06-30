@@ -218,7 +218,7 @@ if agree or disagree:
                              "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","State of Palestine","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","The Bahamas","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"]
                 with st.expander("Optional Questions", expanded=True):
                     st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
-                    st.text_input('What is your Twitter handle?', key="twitter_handle")
+                    #st.text_input('What is your Twitter handle?', key="twitter_handle")
                     st.slider('What is your age?', 0, 130, key="age")
                     st.radio('What is your gender?', ['', 'Male', 'Female', 'Non-binary/Third'],key="gender")
                     st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
@@ -305,12 +305,12 @@ if agree or disagree:
 
         if st.session_state.dem_submitted:
             if "inserted" not in st.session_state:
-                if st.session_state.twitter_handle != "":
-                    from cryptography.fernet import Fernet
-                    fernet = Fernet(st.secrets["key"].encode())
-                    st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode()).decode()
-                else:
-                    st.session_state.twitter_handle_hash = ""
+               # if st.session_state.twitter_handle != "":
+               #     from cryptography.fernet import Fernet
+               #     fernet = Fernet(st.secrets["key"].encode())
+               #     st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode()).decode()
+               # else:
+               #     st.session_state.twitter_handle_hash = ""
                     
                 user_data = {
                             "id": st.session_state.id, 
@@ -319,7 +319,7 @@ if agree or disagree:
                             "f": st.session_state.f,
                             "n": st.session_state.n,
                             "d": st.session_state.d,
-                            "twitter_handle": st.session_state.twitter_handle_hash,
+                          #  "twitter_handle": st.session_state.twitter_handle_hash,
                             "age": st.session_state.age,
                             "gender": st.session_state.gender,
                             "education": st.session_state.education,
