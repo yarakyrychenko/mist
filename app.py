@@ -235,7 +235,7 @@ if agree or disagree:
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
 
-        if st.session_state.mitted or disagree:
+        if st.session_state.dem_submitted or disagree:
             if "country" not in st.session_state:
                 st.session_state.UKorUS = "US" 
                 st.session_state.table =  st.session_state.ustable
