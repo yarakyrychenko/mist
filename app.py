@@ -216,7 +216,7 @@ if agree or disagree:
                              "Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Faeroe Islands","Fiji","Finland","France","French Guiana","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Holy See","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kosovo","Kuwait","Kyrgyzstan",
                              "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mayotte","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Réunion","Saint Helena","Saint Kitts and Nevis",
                              "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","State of Palestine","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","The Bahamas","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"]
-                with st.expander("Optional Questions", expanded=True):
+                with st.form("my_form_dem"):#st.expander("Optional Questions", expanded=True):
                     st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
                     st.text_input('What is your Twitter handle?', key="twitter_handle")
                     st.slider('What is your age?', 0, 130, key="age")
@@ -226,7 +226,7 @@ if agree or disagree:
                     st.selectbox('Which country do you live in?', countries,key="country")
                     st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
                 
-                    st.session_state.dem_submitted = st.button("Submit",key="dem_sub")
+                    st.session_state.dem_submitted = st.form_submit_button(label="Submit") #st.button("Submit",key="dem_sub")
 
         if st.session_state.dem_submitted:
             demplaceholder.empty()
@@ -235,7 +235,7 @@ if agree or disagree:
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
 
-        if st.session_state.dem_submitted or disagree:
+        if st.session_state.mitted or disagree:
             if "country" not in st.session_state:
                 st.session_state.UKorUS = "US" 
                 st.session_state.table =  st.session_state.ustable
@@ -303,7 +303,7 @@ if agree or disagree:
           
   
 
-        if st.session_state.dem_submitted:
+        if st.session_state.mitted:
             if "inserted" not in st.session_state:
                 if st.session_state.twitter_handle != "":
                     from cryptography.fernet import Fernet
