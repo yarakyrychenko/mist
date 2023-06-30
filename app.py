@@ -303,7 +303,7 @@ if agree or disagree:
           
   
 
-        if st.session_state.mitted:
+        if st.session_state.dem_submitted:
             if "inserted" not in st.session_state:
                 if st.session_state.twitter_handle != "":
                     from cryptography.fernet import Fernet
