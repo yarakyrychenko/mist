@@ -237,7 +237,7 @@ if agree or disagree:
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
         if disagree:
-            with st.form("disagree_country"):
+            with st.form("disagree_country_form"):
                 st.selectbox('Which country do you live in?', ["United Kingdom","United States","Other"],key="country")
                 st.session_state.disagree_country = st.form_submit_button("Submit")
             
