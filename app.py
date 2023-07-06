@@ -128,6 +128,8 @@ if "submitted" not in st.session_state:
     st.session_state.submitted = False        
 if "dem_submitted" not in st.session_state:
     st.session_state.dem_submitted = False        
+if "disagree_country" not in st.session_state:
+    st.session_state.disagree_country = False 
 st.session_state.disable = True 
 
 if agree or disagree:
