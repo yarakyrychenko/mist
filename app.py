@@ -234,8 +234,13 @@ if agree or disagree:
                 st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.") 
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
+        if disagree:
+            with st.form("disagree_country"):
+                st.selectbox('Which country do you live in?', ["United Kingdom","United States","Other"],key="country")
+                st.session_state.disagree_country = st.form_submit_button("Submit")
+            
 
-        if st.session_state.dem_submitted or disagree:
+        if st.session_state.dem_submitted or st.session_state.disagree_country:
             if "country" not in st.session_state:
                 st.session_state.UKorUS = "US" 
                 st.session_state.table =  st.session_state.ustable
