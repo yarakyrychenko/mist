@@ -123,7 +123,7 @@ if disagree:
         """)
 
 if agree or disagree:
-    st.markdown("There are two versions of MIST: MIST-20 (Version A, has 20 questions) and MIST-16 (Version B, has 16 questions)."
+    st.markdown("There are two versions of MIST: MIST-20 (Version A, has 20 questions) and MIST-16 (Version B, has 16 questions).")
     st.radio("Which MIST version would you like to try?", ["", "MIST-20", "MIST-16"], key="which_mist")
 
 if "submitted" not in st.session_state:
