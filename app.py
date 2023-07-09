@@ -139,7 +139,7 @@ st.session_state.disable16 = True
 
 if (agree or disagree):
     if st.session_state.which_mist == "MIST-20":
-        st.markdown("### Welcome to MIST-20!")
+        
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-Industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -175,6 +175,7 @@ if (agree or disagree):
         st.session_state.answers = []
             
         with st.form("my_form"):
+            st.markdown("### Welcome to MIST-20!")
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             
             j=0
@@ -362,7 +363,7 @@ if (agree or disagree):
 
 #  MIST 16
     if st.session_state.which_mist == "MIST-16":
-        st.markdown("### Welcome to MIST-16!")
+        
 
         st.session_state.mist_items = [
             "The Government Is Knowingly Spreading Disease Through the Airwaves and Food Supply",
@@ -395,6 +396,7 @@ if (agree or disagree):
         st.session_state.answers = []
             
         with st.form("my_form16"):
+            st.markdown("### Welcome to MIST-16!")
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
             
             j=0
