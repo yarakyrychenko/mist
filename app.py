@@ -74,8 +74,6 @@ with placeholder.container():
         agree = st.session_state.consent == "Yes, I consent" 
         disagree = st.session_state.consent == "No, I do not consent" 
       
-        
-
 if agree:
     placeholder.empty()
     if "id" not in st.session_state:
@@ -124,16 +122,24 @@ if disagree:
         This privacy policy was last updated on May 13, 2023.
         """)
 
+if agree or disagree:
+    st.radio("Which MIST version would you like to try?", ["", "MIST-20", "MIST-16"], key="which_mist")
+
 if "submitted" not in st.session_state:
-    st.session_state.submitted = False        
+    st.session_state.submitted = False
+if "submitted16" not in st.session_state:
+    st.session_state.submitted16 = False
 if "dem_submitted" not in st.session_state:
     st.session_state.dem_submitted = False        
 if "disagree_country" not in st.session_state:
     st.session_state.disagree_country = False 
-st.session_state.disable = True 
+st.session_state.disable = True
+st.session_state.disable16 = True
 
-if agree or disagree:
-    if True:
+if (agree or disagree):
+    if st.session_state.which_mist == "MIST-20":
+        st.markdown("### Welcome to MIST-20!")
+        st.markdown("Press the button above to try MIST-16 with different questions.")
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-Industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -160,23 +166,23 @@ if agree or disagree:
                                                 "t1","t2","t3","t4","t5","t6","t7","t8","t9","t10"] 
         st.session_state.labels = ["Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake",
                                        "Real","Real","Real","Real","Real","Real","Real","Real","Real","Real"]
-            
-        if "order" not in st.session_state:
-            st.session_state.order = ['', 'Real','Fake'] if np.random.random() <= .5 else ['','Fake','Real']
-        if "items_order" not in st.session_state:
-            st.session_state.items_order = np.arange(20)
-            np.random.shuffle(st.session_state.items_order)
+        
+        if "order20" not in st.session_state:
+            st.session_state.order20 = ['', 'Real','Fake'] if np.random.random() <= .5 else ['','Fake','Real']
+        if "items_order20" not in st.session_state:
+            st.session_state.items_order20 = np.arange(len(st.session_state.mist_items))
+            np.random.shuffle(st.session_state.items_order20)
         st.session_state.answers = []
             
-        with st.form("my_form"): #st.expander("**Start the test!** 🧐",expanded=False):
+        with st.form("my_form"):
             st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.") 
             
             j=0
-            for i in st.session_state.items_order:
+            for i in st.session_state.items_order20:
                 j+=1
-                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order20, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
 
-            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False		             
+            st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
             if not st.session_state.submitted:
                 st.session_state.submitted = st.form_submit_button("Submit")#st.button("Submit", disabled=st.session_state.disable, key="sub")
             else:
@@ -191,7 +197,7 @@ if agree or disagree:
         st.session_state.n = 0
         
         for i in range(20):
-            j = st.session_state.items_order[i]
+            j = st.session_state.items_order20[i]
             if st.session_state.labels[j] == st.session_state.answers[i]:
                 st.session_state.graded.append(1)
                 st.session_state.r += 1 if st.session_state.labels[j] == 'Real' else 0
@@ -236,7 +242,7 @@ if agree or disagree:
                 st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.") 
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
-        if disagree:
+        if disagree and not st.session_state.disagree_country:
             with st.form("disagree_country_form"):
                 st.selectbox('Which country do you live in?', ["United Kingdom","United States","Other"],key="country")
                 st.session_state.disagree_country = st.form_submit_button("Submit")
@@ -267,14 +273,14 @@ if agree or disagree:
                 with st.expander("", expanded=True):
                     st.subheader("🎉 Congratulations!")
                     st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population!**") 
-                    st.subheader(f"📈 Your MIST results: {st.session_state.score}/20")
+                    st.subheader(f"📈 Your MIST-20 results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST-20, better than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews">
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """, width=100, height=30)
                     
@@ -282,14 +288,14 @@ if agree or disagree:
                 with st.expander("", expanded=True):
                     st.subheader("👍 Good try!")
                     st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population!**")  
-                    st.subheader(f"📈 Your MIST results: {st.session_state.score}/20")
+                    st.subheader(f"📈 Your MIST-20 results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST-20, better than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews">
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """, width=100, height=30)
                     
@@ -297,21 +303,21 @@ if agree or disagree:
                 with st.expander("", expanded=True):
                     st.subheader("⚠️ You might be susceptible!")
                     st.markdown(f"**You're more resilient to misinformation than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population!**")
-                    st.subheader(f"📈 Your MIST results: {st.session_state.score}/20")
+                    st.subheader(f"📈 Your MIST-20 results: {st.session_state.score}/20")
                     st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
                     st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
                     st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -10 to +10, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
-            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST, better than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews"> 
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/20 on MIST-20, better than {st.session_state.table[st.session_state.score-1]}% of the {st.session_state.UKorUS} population. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews">
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
             """, width=100, height=30)
           
   
 
         if st.session_state.dem_submitted:
-            if "inserted" not in st.session_state:
+            if "inserted20" not in st.session_state and False:
                # if st.session_state.twitter_handle != "":
                #     from cryptography.fernet import Fernet
                #     fernet = Fernet(st.secrets["key"].encode())
@@ -332,9 +338,12 @@ if agree or disagree:
                             "education": st.session_state.education,
                             "politics": st.session_state.politics,
                             "country": st.session_state.country,
-                            "perceived_ability": st.session_state.perceived_ability
+                            "perceived_ability": st.session_state.perceived_ability,
+                            "mist": st.session_state.which_mist,
+                             "submitted16":st.session_state.submitted16,
+                            "submitted":st.session_state.submitted
                             }
-                item_data = {st.session_state.mist_item_labels[st.session_state.items_order[i]]: st.session_state.answers[i] for i in range(20)}
+                item_data = {st.session_state.mist_item_labels[st.session_state.items_order20[i]]: st.session_state.answers[i] for i in range(20)}
                 user_data.update(item_data)
                 
                 from pymongo.mongo_client import MongoClient
@@ -343,4 +352,217 @@ if agree or disagree:
                     db = client.mist
                     collection = db.app
                     collection.insert_one(user_data)  
-                    st.session_state.inserted = True
+                    st.session_state.inserted20 = True
+
+
+#  MIST 16
+    if st.session_state.which_mist == "MIST-16":
+        st.markdown("### Welcome to MIST-20!")
+        st.markdown("Press the button above to try MIST-16 with different questions.")
+        st.session_state.mist_items = [
+            "The Government Is Knowingly Spreading Disease Through the Airwaves and Food Supply",
+            "The Government Is Actively Destroying Evidence Related to the JFK Assassination",
+            "Government Officials Have Manipulated Stock Prices to Hide Scandals",
+            "A Small Group of People Control the World Economy by Manipulating the Price of Gold and Oil",
+            "The Government Is Conducting a Massive Cover-Up of Their Involvement in 9/11",
+            "New Study: Left-Wingers Are More Likely to Lie to Get a Higher Salary",
+            "Climate Scientists' Work Is 'Unreliable', a 'Deceptive Method of Communication''",
+            "Left-Wingers Are More Likely to Lie to Get a Good Grade",
+             "Morocco’s King Appoints Committee Chief to Fight Poverty and Inequality",
+             "US Hispanic Population Reached New High in 2018, But Growth Has Slowed",
+             "Hyatt Will Remove Small Bottles from Hotel Bathrooms by 2021",
+             "Taiwan Seeks to Join Fight Against Global Warming",
+             "About a Quarter of Large US Newspapers Laid off Staff in 2018",
+             "Majority in US Still Want Abortion Legal, with Limits",
+             "Most Americans Say It’s OK for Professional Athletes to Speak out Publicly about Politics",
+             "United Nations Gets Mostly Positive Marks from People Around the World"
+            ]
+        st.session_state.mist_item_labels = ["f1m16","f2m16","f3m16","f4m16","f5m16","f6m16","f7m16","f8m16"
+                                                "t1m16","t2m16","t3m16","t4m16","t5m16","t6m16","t7m16","t8m16"]
+        st.session_state.labels = ["Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake",
+                                       "Real","Real","Real","Real","Real","Real","Real","Real"]
+        
+        if "order16" not in st.session_state:
+            st.session_state.order16 = ['', 'Real','Fake'] if np.random.random() <= .5 else ['','Fake','Real']
+        if "items_order16" not in st.session_state:
+            st.session_state.items_order16 = np.arange(len(st.session_state.mist_items))
+            np.random.shuffle(st.session_state.items_order16)
+        st.session_state.answers = []
+            
+        with st.form("my_form16"):
+            st.markdown("##### Please categorize the following news headlines as either 'Fake News' or 'Real News'.")
+            
+            j=0
+            for i in st.session_state.items_order16:
+                j+=1
+                st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order16, key = "m16q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
+
+            st.session_state.disable16 = True if len([answer for answer in st.session_state.answers if answer != '']) != len(st.session_state.mist_items) else False
+            if not st.session_state.submitted16:
+                st.session_state.submitted16 = st.form_submit_button("Submit")#st.button("Submit", disabled=st.session_state.disable, key="sub")
+            else:
+                st.form_submit_button("Submit") #st.button("Submit", disabled=st.session_state.disable, key="sub")
+         
+    if st.session_state.submitted16 and not st.session_state.disable16:
+        
+        st.session_state.graded = []
+        st.session_state.r = 0
+        st.session_state.f = 0
+        st.session_state.d = 0
+        st.session_state.n = 0
+        
+        for i in range(len(st.session_state.mist_items)):
+            j = st.session_state.items_order16[i]
+            if st.session_state.labels[j] == st.session_state.answers[i]:
+                st.session_state.graded.append(1)
+                st.session_state.r += 1 if st.session_state.labels[j] == 'Real' else 0
+                st.session_state.f += 1 if st.session_state.labels[j] == 'Fake' else 0
+            else:
+                st.session_state.graded.append(0)
+            st.session_state.d += 1 if st.session_state.answers[i] == 'Fake' else 0
+            st.session_state.n += 1 if st.session_state.answers[i] == 'Real' else 0
+        
+        st.session_state.d = st.session_state.d - len(st.session_state.mist_items)/2 if st.session_state.d - len(st.session_state.mist_items)/2 >= 0 else 0
+        st.session_state.n = st.session_state.n - len(st.session_state.mist_items)/2 if st.session_state.n - len(st.session_state.mist_items)/2 >= 0 else 0
+        
+        st.session_state.ustable = {1:0, 2:0, 3:0, 4:0, 5:0, 6:1, 7:3, 8:6, 9:11, 10:20,
+                                    11:28, 12:36, 13:44, 14:53, 15:62, 16:71, 17:81, 18:89, 19:96, 20:100}
+        st.session_state.uktable = {1:0, 2:0, 3:0, 4:0, 5:1, 6:1, 7:3, 8:5, 9:10, 10:23,
+                                    11:32, 12:43, 13:53, 14:63, 15:73, 16:83, 17:90, 18:95, 19:98, 20:100}
+        st.session_state.score = int(np.sum(st.session_state.graded))
+
+        if agree:
+            demplaceholder = st.empty()
+        if agree and not st.session_state.dem_submitted:
+            with demplaceholder.container():
+                countries = ["Select Country","Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Channel Islands","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Côte d'Ivoire",
+                             "Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Faeroe Islands","Fiji","Finland","France","French Guiana","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Holy See","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kosovo","Kuwait","Kyrgyzstan",
+                             "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macao","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mayotte","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Réunion","Saint Helena","Saint Kitts and Nevis",
+                             "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome & Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","State of Palestine","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","The Bahamas","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Western Sahara","Yemen","Zambia","Zimbabwe"]
+                with st.form("dem_form16"): #st.expander("Optional Questions", expanded=True):
+                    st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
+                    #st.text_input('What is your Twitter handle?', key="twitter_handle")
+                    st.slider('What is your age?', 0, 130, key="age")
+                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Non-binary/Third'],key="gender")
+                    st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
+                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
+                    st.selectbox('Which country do you live in?', countries,key="country")
+                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
+                
+                    st.session_state.dem_submitted = st.form_submit_button("Submit") #st.button("Submit",key="dem_sub")
+
+        if st.session_state.dem_submitted:
+            demplaceholder.empty()
+            with st.expander("Your app ID", expanded=True):
+                st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.")
+                st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
+
+        if disagree and not st.session_state.disagree_country:
+            with st.form("disagree_country_form"):
+                st.selectbox('Which country do you live in?', ["United Kingdom","United States","Other"],key="country")
+                st.session_state.disagree_country = st.form_submit_button("Submit")
+            
+
+        if st.session_state.dem_submitted or st.session_state.disagree_country:
+            if "country" not in st.session_state:
+                st.session_state.UKorUS = "US"
+                st.session_state.table =  st.session_state.ustable
+            elif st.session_state.country == "United Kingdom":
+                st.session_state.UKorUS = "UK"
+                st.session_state.table =  st.session_state.uktable
+            else:
+                st.session_state.UKorUS = "US"
+                st.session_state.table =  st.session_state.ustable
+                
+            #with st.expander("scores", expanded=True):
+            st.session_state.score_print = st.session_state.score - 8 if st.session_state.score - 8 >= 0 else 0
+            
+            st.session_state.dn = st.session_state.n - st.session_state.d
+            st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
+            st.session_state.good = "is **great**!" if st.session_state.score > 13 else "is **good**!" if st.session_state.score > 10 else "**needs some work**..."
+            st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither too skeptical nor too gullible"
+            st.session_state.how = "might be **a bit " if np.linalg.norm(st.session_state.dn) < 3 else "might be **very " if np.linalg.norm(st.session_state.dn) < 6 else "might be **overly "
+            st.session_state.how = st.session_state.how if st.session_state.dn != 0 else "are **"
+            if st.session_state.score > 13:
+                st.balloons()
+                with st.expander("", expanded=True):
+                    st.subheader("🎉 Congratulations!")
+                    st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
+                    st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+                    components.html(
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/16 on MIST-16. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews">
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
+            """, width=100, height=30)
+                    
+            elif 10 < st.session_state.score <= 13:
+                with st.expander("", expanded=True):
+                    st.subheader("👍 Good try!")
+                    st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
+                    st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+                    components.html(
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/16 on MIST-16. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews">
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
+            """, width=100, height=30)
+                    
+            else:
+                with st.expander("", expanded=True):
+                    st.subheader("⚠️ You might be susceptible!")
+                    st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
+                    st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
+                    components.html(
+            f"""<a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="I scored {st.session_state.score}/16 on MIST-16. Test your misinformation susceptibility now! What is #YourMIST? 🧐"  data-url="yourmist.streamlit.app" data-hashtags="misinformation,fakenews">
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></a>
+            """, width=100, height=30)
+          
+  
+
+        if st.session_state.dem_submitted:
+            if "inserted16" not in st.session_state and False:
+               # if st.session_state.twitter_handle != "":
+               #     from cryptography.fernet import Fernet
+               #     fernet = Fernet(st.secrets["key"].encode())
+               #     st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode()).decode()
+               # else:
+               #     st.session_state.twitter_handle_hash = ""
+                    
+                user_data = {
+                            "id": st.session_state.id,
+                            "score": st.session_state.score,
+                            "r": st.session_state.r,
+                            "f": st.session_state.f,
+                            "n": st.session_state.n,
+                            "d": st.session_state.d,
+                          #  "twitter_handle": st.session_state.twitter_handle_hash,
+                            "age": st.session_state.age,
+                            "gender": st.session_state.gender,
+                            "education": st.session_state.education,
+                            "politics": st.session_state.politics,
+                            "country": st.session_state.country,
+                            "perceived_ability": st.session_state.perceived_ability,
+                            "mist":st.session_state.which_mist,
+                            "submitted16":st.session_state.submitted16,
+                            "submitted":st.session_state.submitted
+                            }
+                item_data = {st.session_state.mist_item_labels[st.session_state.items_order16[i]]: st.session_state.answers[i] for i in range(len(st.session_state.mist_items))}
+                user_data.update(item_data)
+                
+                from pymongo.mongo_client import MongoClient
+                from pymongo.server_api import ServerApi
+                with MongoClient(st.secrets["mongo"],server_api=ServerApi('1')) as client:
+                    db = client.mist
+                    collection = db.app
+                    collection.insert_one(user_data)
+                    st.session_state.inserted16 = True
+
