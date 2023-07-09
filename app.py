@@ -560,7 +560,10 @@ if (agree or disagree):
                             "perceived_ability": st.session_state.perceived_ability}
                 if "session_state.user_dem_data" in st.session_state:
                     user_data.update(st.session_state.user_dem_data)
-                    
+
+                st.write(st.session_state.mist_item_labels)
+                st.write(st.session_state.items_order16)
+                st.write(st.session_state.answers)
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order16[i]]: st.session_state.answers[i] for i in range(16)}
                 user_data.update(item_data)
                 
