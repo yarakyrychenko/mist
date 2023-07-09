@@ -263,7 +263,7 @@ if (agree or disagree):
             #with st.expander("scores", expanded=True):
             st.session_state.score_print = st.session_state.score - 10 if st.session_state.score - 10 >= 0 else 0
             
-            st.session_state.dn = st.session_state.n - st.session_state.d
+            st.session_state.dn = int(st.session_state.n - st.session_state.d)
             st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
             st.session_state.good = "is **great**!" if st.session_state.score > 16 else "is **good**!" if st.session_state.score > 13 else "**needs some work**..."
             st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither too skeptical nor too gullible"
@@ -483,7 +483,7 @@ if (agree or disagree):
             #with st.expander("scores", expanded=True):
             st.session_state.score_print = st.session_state.score - 8 if st.session_state.score - 8 >= 0 else 0
             
-            st.session_state.dn = st.session_state.n - st.session_state.d
+            st.session_state.dn = int(st.session_state.n - st.session_state.d)
             st.session_state.sign = "" if st.session_state.dn <= 0 else "+"
             st.session_state.good = "is **great**!" if st.session_state.score > 13 else "is **good**!" if st.session_state.score > 10 else "**needs some work**..."
             st.session_state.skeptical = "skeptical" if st.session_state.dn < 0 else "trusting" if st.session_state.dn > 0 else "neither too skeptical nor too gullible"
@@ -494,9 +494,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("🎉 Congratulations!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {100*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {100*st.session_state.r/8}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {100*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
@@ -508,9 +508,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("👍 Good try!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {100*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {100*st.session_state.r/8}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {100*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
@@ -522,9 +522,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("⚠️ You might be susceptible!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r/8}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {100*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {100*st.session_state.r/8}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {100*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
