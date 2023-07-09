@@ -380,7 +380,7 @@ if (agree or disagree):
              "Most Americans Say It’s OK for Professional Athletes to Speak out Publicly about Politics",
              "United Nations Gets Mostly Positive Marks from People Around the World"
             ]
-        st.session_state.mist_item_labels = ["f1m16","f2m16","f3m16","f4m16","f5m16","f6m16","f7m16","f8m16"
+        st.session_state.mist_item_labels = ["f1m16","f2m16","f3m16","f4m16","f5m16","f6m16","f7m16","f8m16",
                                                 "t1m16","t2m16","t3m16","t4m16","t5m16","t6m16","t7m16","t8m16"]
         st.session_state.labels = ["Fake","Fake","Fake","Fake","Fake","Fake","Fake","Fake",
                                        "Real","Real","Real","Real","Real","Real","Real","Real"]
@@ -561,9 +561,7 @@ if (agree or disagree):
                 if "session_state.user_dem_data" in st.session_state:
                     user_data.update(st.session_state.user_dem_data)
 
-                st.write(st.session_state.mist_item_labels)
-                st.write(st.session_state.items_order16)
-                st.write(st.session_state.answers)
+                
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order16[i]]: st.session_state.answers[i] for i in range(16)}
                 user_data.update(item_data)
                 
