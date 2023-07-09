@@ -183,6 +183,8 @@ if (agree or disagree):
                 st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order20, key = "q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
 
             st.session_state.disable = True if len([answer for answer in st.session_state.answers if answer != '']) != 20 else False
+            if st.session_state.disable:
+                st.markdown("*Make sure you answered every question.*"
             if not st.session_state.submitted:
                 st.session_state.submitted = st.form_submit_button("Submit")#st.button("Submit", disabled=st.session_state.disable, key="sub")
             else:
@@ -401,6 +403,8 @@ if (agree or disagree):
                 st.session_state.answers.append(st.radio(st.session_state.mist_items[i], st.session_state.order16, key = "m16q"+str(j+1), format_func=format, label_visibility="visible", horizontal=True))
 
             st.session_state.disable16 = True if len([answer for answer in st.session_state.answers if answer != '']) != len(st.session_state.mist_items) else False
+            if st.session_state.disable16:
+                st.markdown("*Make sure you answered every question.*"
             if not st.session_state.submitted16:
                 st.session_state.submitted16 = st.form_submit_button("Submit")#st.button("Submit", disabled=st.session_state.disable, key="sub")
             else:
