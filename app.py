@@ -343,7 +343,7 @@ if (agree or disagree):
                             "politics": st.session_state.politics,
                             "country": st.session_state.country,
                             "perceived_ability": st.session_state.perceived_ability}
-                if "session_state.user_dem_data" in st.session_state:
+                if "user_dem_data" in st.session_state:
                     user_data.update(st.session_state.user_dem_data)
                     
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order20[i]]: st.session_state.answers[i] for i in range(20)}
@@ -558,7 +558,7 @@ if (agree or disagree):
                             "politics": st.session_state.politics,
                             "country": st.session_state.country,
                             "perceived_ability": st.session_state.perceived_ability}
-                if "session_state.user_dem_data" in st.session_state:
+                if "user_dem_data" in st.session_state:
                     user_data.update(st.session_state.user_dem_data)
 
                 
