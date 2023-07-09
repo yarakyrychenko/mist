@@ -227,12 +227,12 @@ if (agree or disagree):
                 with st.form("dem_form"): #st.expander("Optional Questions", expanded=True):
                     st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
                     #st.text_input('What is your Twitter handle?', key="twitter_handle")
-                    st.session_state.age = st.slider('What is your age?', 0, 130, key="age")
-                    st.session_state.gender = st.radio('What is your gender?', ['', 'Male', 'Female', 'Non-binary/Third'],key="gender")
-                    st.session_state.education = st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
-                    st.session_state.politics = st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
-                    st.session_state.country = st.selectbox('Which country do you live in?', countries,key="country")
-                    st.session_state.perceived_ability =st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
+                    st.slider('What is your age?', 0, 130, key="age")
+                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Non-binary/Third'],key="gender")
+                    st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
+                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
+                    st.selectbox('Which country do you live in?', countries,key="country")
+                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
                 
                     st.session_state.dem_submitted = st.form_submit_button("Submit") #st.button("Submit",key="dem_sub")
 
@@ -332,17 +332,20 @@ if (agree or disagree):
                             "f": st.session_state.f,
                             "n": st.session_state.n,
                             "d": st.session_state.d,
-                          #  "twitter_handle": st.session_state.twitter_handle_hash,
-                            "age": st.session_state.age,
-                            "gender": st.session_state.gender,
-                            "education": st.session_state.education,
-                            "politics": st.session_state.politics,
-                            "country": st.session_state.country,
-                            "perceived_ability": st.session_state.perceived_ability,
                             "mist": st.session_state.which_mist,
                              "submitted16":st.session_state.submitted16,
                             "submitted":st.session_state.submitted
                             }
+                if "age" in st.session_state:
+                    st.session_state.user_dem_data = {"age": st.session_state.age,
+                            "gender": st.session_state.gender,
+                            "education": st.session_state.education,
+                            "politics": st.session_state.politics,
+                            "country": st.session_state.country,
+                            "perceived_ability": st.session_state.perceived_ability}
+                if "session_state.user_dem_data" in st.session_state:
+                    user_data.update(st.session_state.user_dem_data)
+                    
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order20[i]]: st.session_state.answers[i] for i in range(20)}
                 user_data.update(item_data)
                 
@@ -442,12 +445,12 @@ if (agree or disagree):
                 with st.form("dem_form16"): #st.expander("Optional Questions", expanded=True):
                     st.markdown("*Your answers to these questions are not taken into considerations when calculating your MIST results.*")
                     #st.text_input('What is your Twitter handle?', key="twitter_handle")
-                    st.session_state.age = st.slider('What is your age?', 0, 130, key="age")
-                    st.session_state.gender = st.radio('What is your gender?', ['', 'Male', 'Female', 'Non-binary/Third'],key="gender")
-                    st.session_state.education = st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
-                    st.session_state.politics = st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
-                    st.session_state.country = st.selectbox('Which country do you live in?', countries,key="country")
-                    st.session_state.perceived_ability =st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
+                    st.slider('What is your age?', 0, 130, key="age")
+                    st.radio('What is your gender?', ['', 'Male', 'Female', 'Non-binary/Third'],key="gender")
+                    st.radio('What is the highest level of education you completed?', ['', 'High School or Less', 'Some University but no degree', 'University Bachelors Degree','Graduate or professional degree (e.g., MA, PhD, MD)' ], key="education")
+                    st.radio('What is your political orientation?', ['', 'Extremely liberal', 'Liberal', 'Slightly liberal', 'Moderate', 'Slightly conservative', 'Conservative', 'Extremely conservative'],key="politics")
+                    st.selectbox('Which country do you live in?', countries,key="country")
+                    st.radio('How good do you think your ability to distinguish real news from fake news is?', ['', 'Very poor', 'Poor', 'Average', 'Good', 'Very good'],key="perceived_ability")
                 
                     st.session_state.dem_submitted = st.form_submit_button("Submit") #st.button("Submit",key="dem_sub")
 
@@ -538,23 +541,26 @@ if (agree or disagree):
                #     st.session_state.twitter_handle_hash = ""
                     
                 user_data = {
-                            "id": st.session_state.id,
-                            "score": st.session_state.score,
+                            "id": st.session_state.id, 
+                            "score": st.session_state.score, 
                             "r": st.session_state.r,
                             "f": st.session_state.f,
                             "n": st.session_state.n,
                             "d": st.session_state.d,
-                          #  "twitter_handle": st.session_state.twitter_handle_hash,
-                            "age": st.session_state.age,
+                            "mist": st.session_state.which_mist,
+                             "submitted16":st.session_state.submitted16,
+                            "submitted":st.session_state.submitted
+                            }
+                if "age" in st.session_state:
+                    st.session_state.user_dem_data = {"age": st.session_state.age,
                             "gender": st.session_state.gender,
                             "education": st.session_state.education,
                             "politics": st.session_state.politics,
                             "country": st.session_state.country,
-                            "perceived_ability": st.session_state.perceived_ability,
-                            "mist":st.session_state.which_mist,
-                            "submitted16":st.session_state.submitted16,
-                            "submitted":st.session_state.submitted
-                            }
+                            "perceived_ability": st.session_state.perceived_ability}
+                if "session_state.user_dem_data" in st.session_state:
+                    user_data.update(st.session_state.user_dem_data)
+                    
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order16[i]]: st.session_state.answers[i] for i in range(len(st.session_state.mist_items))}
                 user_data.update(item_data)
                 
