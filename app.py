@@ -139,7 +139,6 @@ st.session_state.disable16 = True
 if (agree or disagree):
     if st.session_state.which_mist == "MIST-20":
         st.markdown("### Welcome to MIST-20!")
-        st.markdown("Press the button above to try MIST-16 with different questions.")
         st.session_state.mist_items = [
              "Government Officials Have Manipulated Stock Prices to Hide Scandals",
              "The Corporate Media Is Controlled by the Military-Industrial Complex: The Major Oil Companies Own the Media and Control Their Agenda",
@@ -363,7 +362,7 @@ if (agree or disagree):
 #  MIST 16
     if st.session_state.which_mist == "MIST-16":
         st.markdown("### Welcome to MIST-16!")
-        st.markdown("Press the button above to try MIST-20 with different questions.")
+
         st.session_state.mist_items = [
             "The Government Is Knowingly Spreading Disease Through the Airwaves and Food Supply",
             "The Government Is Actively Destroying Evidence Related to the JFK Assassination",
@@ -495,9 +494,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("🎉 Congratulations!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r/8}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
@@ -509,9 +508,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("👍 Good try!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r/8}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
@@ -523,9 +522,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("⚠️ You might be susceptible!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r/8}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
