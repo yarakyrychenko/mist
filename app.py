@@ -357,8 +357,8 @@ if (agree or disagree):
 
 #  MIST 16
     if st.session_state.which_mist == "MIST-16":
-        st.markdown("### Welcome to MIST-20!")
-        st.markdown("Press the button above to try MIST-16 with different questions.")
+        st.markdown("### Welcome to MIST-16!")
+        st.markdown("Press the button above to try MIST-20 with different questions.")
         st.session_state.mist_items = [
             "The Government Is Knowingly Spreading Disease Through the Airwaves and Food Supply",
             "The Government Is Actively Destroying Evidence Related to the JFK Assassination",
