@@ -494,9 +494,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("🎉 Congratulations!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r/8}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
@@ -508,9 +508,9 @@ if (agree or disagree):
                 with st.expander("", expanded=True):
                     st.subheader("👍 Good try!")
                     st.subheader(f"📈 Your MIST-16 results: {st.session_state.score}/16")
-                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print/8}%** *(ability to accurately distinguish real news from fake news)*")
-                    st.markdown(f"**Real News Detection: {10*st.session_state.r/8}%** *(ability to correctly identify real news)*")
-                    st.markdown(f"**Fake News Detection: {10*st.session_state.f/8}%** *(ability to correctly identify fake news)*")
+                    st.markdown(f"**Veracity Discernment: {10*st.session_state.score_print}%** *(ability to accurately distinguish real news from fake news)*")
+                    st.markdown(f"**Real News Detection: {10*st.session_state.r}%** *(ability to correctly identify real news)*")
+                    st.markdown(f"**Fake News Detection: {10*st.session_state.f}%** *(ability to correctly identify fake news)*")
                     st.markdown(f"**Distrust/Naïvité: {st.session_state.sign}{st.session_state.dn}** *(ranges from -8 to +8, overly skeptical to overly gullible)*")
                     st.markdown(f"👉 Your ability to recognize real and fake news {st.session_state.good} You {st.session_state.how}{st.session_state.skeptical}** when it comes to the news.")
                     components.html(
