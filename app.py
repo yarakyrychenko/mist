@@ -317,7 +317,7 @@ if (agree or disagree):
   
 
         if st.session_state.dem_submitted:
-            if "inserted20" not in st.session_state and False:
+            if "inserted20" not in st.session_state:
                # if st.session_state.twitter_handle != "":
                #     from cryptography.fernet import Fernet
                #     fernet = Fernet(st.secrets["key"].encode())
@@ -529,7 +529,7 @@ if (agree or disagree):
   
 
         if st.session_state.dem_submitted:
-            if "inserted16" not in st.session_state and False:
+            if "inserted16" not in st.session_state:
                # if st.session_state.twitter_handle != "":
                #     from cryptography.fernet import Fernet
                #     fernet = Fernet(st.secrets["key"].encode())
