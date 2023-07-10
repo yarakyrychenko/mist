@@ -376,7 +376,7 @@ if (agree or disagree):
             "Left-Wingers Are More Likely to Lie to Get a Good Grade",
              "Morocco’s King Appoints Committee Chief to Fight Poverty and Inequality",
              "US Hispanic Population Reached New High in 2018, But Growth Has Slowed",
-             "Hyatt Will Remove Small Bottles from Hotel Bathrooms by 2021",
+             "Hyatt Will Remove Small Bottles from Hotel Bathrooms",
              "Taiwan Seeks to Join Fight Against Global Warming",
              "About a Quarter of Large US Newspapers Laid off Staff in 2018",
              "Majority in US Still Want Abortion Legal, with Limits",
