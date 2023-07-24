@@ -242,7 +242,7 @@ if (agree or disagree):
         if st.session_state.dem_submitted:
             demplaceholder.empty()
             with st.expander("Your app ID", expanded=True):
-                st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.") 
+                st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted. If you take both MIST versions, you might receive two different IDs. Please send both of them to ensure all the data is deleted.") 
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
         if disagree and not st.session_state.disagree_country:
@@ -463,7 +463,7 @@ if (agree or disagree):
         if st.session_state.dem_submitted:
             demplaceholder.empty()
             with st.expander("Your app ID", expanded=True):
-                st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted.")
+                st.markdown(f"Thanks for participating in our study! Your app ID is **{st.session_state.id}**. Email Yara Kyrychenko ([yk408@cam.ac.uk](mailto:yk408@cam.ac.uk)) with it within one year if you want your answers deleted. If you take both MIST versions, you might receive two different IDs. Please send both of them to ensure all the data is deleted.")
                 st.markdown("*Your answers to the optional questions are not taken into considerations when calculating your MIST results.*")
 
         if disagree and not st.session_state.disagree_country:
