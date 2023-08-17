@@ -333,13 +333,6 @@ if (agree or disagree):
 
         if st.session_state.dem_submitted:
             if "inserted20" not in st.session_state:
-               # if st.session_state.twitter_handle != "":
-               #     from cryptography.fernet import Fernet
-               #     fernet = Fernet(st.secrets["key"].encode())
-               #     st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode()).decode()
-               # else:
-               #     st.session_state.twitter_handle_hash = ""
-                    
                 user_data = {
                             "id": st.session_state.id, 
                             "score": st.session_state.score, 
@@ -551,13 +544,6 @@ if (agree or disagree):
 
         if st.session_state.dem_submitted:
             if "inserted16" not in st.session_state:
-               # if st.session_state.twitter_handle != "":
-               #     from cryptography.fernet import Fernet
-               #     fernet = Fernet(st.secrets["key"].encode())
-               #     st.session_state.twitter_handle_hash = fernet.encrypt(st.session_state.twitter_handle.encode()).decode()
-               # else:
-               #     st.session_state.twitter_handle_hash = ""
-                    
                 user_data = {
                             "id": st.session_state.id, 
                             "score": st.session_state.score, 
