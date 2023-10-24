@@ -43,7 +43,7 @@ with col2:
 st.subheader("Misinformation Susceptibility Test")
 st.markdown("**Think you can beat misinformation? Try this comprehensive test of misinformation susceptibility.**")
 st.markdown("It only takes 2-5 minutes!")
-st.markdown("Read more: [Open access, peer-reviewed paper](https://doi.org/10.3758/s13428-023-02124-2), [Cambridge](https://www.cam.ac.uk/stories/mist), [YouGov](https://today.yougov.com/topics/politics/articles-reports/2023/06/28/americans-distinguish-real-fake-news-headline-poll), [Forbes](https://www.forbes.com/sites/conormurray/2023/06/28/gen-z-and-millennials-more-likely-to-fall-for-fake-news-than-older-people-test-finds/amp/)")
+st.markdown("Read more: [Open access, peer-reviewed paper](https://doi.org/10.3758/s13428-023-02124-2), [Cambridge](https://www.cam.ac.uk/stories/mist), [YouGov](https://today.yougov.com/politics/articles/45855-americans-distinguish-real-fake-news-headline-poll), [Forbes](https://www.forbes.com/sites/conormurray/2023/06/28/gen-z-and-millennials-more-likely-to-fall-for-fake-news-than-older-people-test-finds/amp/), [NiemanLab](https://www.niemanlab.org/2023/07/how-a-new-two-minute-quiz-measures-misinformation-susceptibility/), [another study](https://www.cambridge.org/core/journals/judgment-and-decision-making/article/susceptibility-to-misinformation-is-consistent-across-question-framings-and-response-modes-and-better-explained-by-myside-bias-and-partisanship-than-analytical-thinking/1121D46E918815B2CD7A9C6C237464A2)")
 st.markdown("")
 st.markdown("""
 **FAQs:**
