@@ -57,7 +57,7 @@ st.markdown("""
 - For more information about how the headlines were generated and which headlines were real or fake, please consult the paper: https://doi.org/10.3758/s13428-023-02124-2.
         """)
 st.markdown("")
-st.markdown("*Dr Rakoen Maertens, University of Cambridge, Department of Psychology, rm938@cam.ac.uk*")
+st.markdown("*Dr Rakoen Maertens, Department of Experimental Psychology, University of Oxford, rakoen.maertens@psy.ox.ac.uk*")
 st.markdown('<p style="font-size: 10px;">Maertens, R.*, Götz, F. M.*, Golino, H. F., Roozenbeek, J., Schneider, C. R., Kyrychenko, Y., Kerr, J. R., Stieger, S., McClanahan, W. P., Drabot, K., He, J., & van der Linden, S. (2023). The Misinformation Susceptibility Test (MIST): A psychometrically validated measure of news veracity discernment. <i>Behavior Research Methods.</i> Advance online publication. <a href="https://doi.org/10.3758/s13428-023-02124-2">https://doi.org/10.3758/s13428-023-02124-2</a></p>', unsafe_allow_html=True)
 placeholder = st.empty()
 with placeholder.container():
