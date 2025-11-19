@@ -1,4 +1,4 @@
-streamlit==1.23.0
+streamlit==1.51.0 #1.23.0
 pymongo[srv]==3.12
 datetime
 uuid
